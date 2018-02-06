@@ -7,31 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B0387E1F201F1BA0004A0343 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0387E1E201F1BA0004A0343 /* AppDelegate.swift */; };
-		B0387E21201F1BA0004A0343 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B0387E20201F1BA0004A0343 /* GameScene.sks */; };
-		B0387E23201F1BA0004A0343 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B0387E22201F1BA0004A0343 /* Actions.sks */; };
-		B0387E25201F1BA0004A0343 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0387E24201F1BA0004A0343 /* GameScene.swift */; };
-		B0387E27201F1BA0004A0343 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0387E26201F1BA0004A0343 /* GameViewController.swift */; };
-		B0387E2A201F1BA0004A0343 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0387E28201F1BA0004A0343 /* Main.storyboard */; };
-		B0387E2C201F1BA0004A0343 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0387E2B201F1BA0004A0343 /* Assets.xcassets */; };
-		B0387E2F201F1BA0004A0343 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0387E2D201F1BA0004A0343 /* LaunchScreen.storyboard */; };
+		B0513D2220295C6600B5C0C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0513D2120295C6600B5C0C2 /* AppDelegate.swift */; };
+		B0513D2420295C6600B5C0C2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B0513D2320295C6600B5C0C2 /* GameScene.sks */; };
+		B0513D2620295C6600B5C0C2 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B0513D2520295C6600B5C0C2 /* Actions.sks */; };
+		B0513D2820295C6600B5C0C2 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0513D2720295C6600B5C0C2 /* GameScene.swift */; };
+		B0513D2A20295C6600B5C0C2 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0513D2920295C6600B5C0C2 /* GameViewController.swift */; };
+		B0513D2D20295C6600B5C0C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0513D2B20295C6600B5C0C2 /* Main.storyboard */; };
+		B0513D2F20295C6600B5C0C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0513D2E20295C6600B5C0C2 /* Assets.xcassets */; };
+		B0513D3220295C6600B5C0C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0513D3020295C6600B5C0C2 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B0387E1B201F1BA0004A0343 /* FTD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FTD.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0387E1E201F1BA0004A0343 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B0387E20201F1BA0004A0343 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		B0387E22201F1BA0004A0343 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		B0387E24201F1BA0004A0343 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		B0387E26201F1BA0004A0343 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		B0387E29201F1BA0004A0343 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B0387E2B201F1BA0004A0343 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B0387E2E201F1BA0004A0343 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B0387E30201F1BA0004A0343 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0513D1E20295C6600B5C0C2 /* FTD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FTD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0513D2120295C6600B5C0C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B0513D2320295C6600B5C0C2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		B0513D2520295C6600B5C0C2 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		B0513D2720295C6600B5C0C2 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		B0513D2920295C6600B5C0C2 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		B0513D2C20295C6600B5C0C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B0513D2E20295C6600B5C0C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B0513D3120295C6600B5C0C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B0513D3320295C6600B5C0C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B0387E18201F1BA0004A0343 /* Frameworks */ = {
+		B0513D1B20295C6600B5C0C2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,34 +41,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B0387E12201F1BA0004A0343 = {
+		B0513D1520295C6600B5C0C2 = {
 			isa = PBXGroup;
 			children = (
-				B0387E1D201F1BA0004A0343 /* FTD */,
-				B0387E1C201F1BA0004A0343 /* Products */,
+				B0513D2020295C6600B5C0C2 /* FTD */,
+				B0513D1F20295C6600B5C0C2 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		B0387E1C201F1BA0004A0343 /* Products */ = {
+		B0513D1F20295C6600B5C0C2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B0387E1B201F1BA0004A0343 /* FTD.app */,
+				B0513D1E20295C6600B5C0C2 /* FTD.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B0387E1D201F1BA0004A0343 /* FTD */ = {
+		B0513D2020295C6600B5C0C2 /* FTD */ = {
 			isa = PBXGroup;
 			children = (
-				B0387E1E201F1BA0004A0343 /* AppDelegate.swift */,
-				B0387E20201F1BA0004A0343 /* GameScene.sks */,
-				B0387E22201F1BA0004A0343 /* Actions.sks */,
-				B0387E24201F1BA0004A0343 /* GameScene.swift */,
-				B0387E26201F1BA0004A0343 /* GameViewController.swift */,
-				B0387E28201F1BA0004A0343 /* Main.storyboard */,
-				B0387E2B201F1BA0004A0343 /* Assets.xcassets */,
-				B0387E2D201F1BA0004A0343 /* LaunchScreen.storyboard */,
-				B0387E30201F1BA0004A0343 /* Info.plist */,
+				B0513D2120295C6600B5C0C2 /* AppDelegate.swift */,
+				B0513D2320295C6600B5C0C2 /* GameScene.sks */,
+				B0513D2520295C6600B5C0C2 /* Actions.sks */,
+				B0513D2720295C6600B5C0C2 /* GameScene.swift */,
+				B0513D2920295C6600B5C0C2 /* GameViewController.swift */,
+				B0513D2B20295C6600B5C0C2 /* Main.storyboard */,
+				B0513D2E20295C6600B5C0C2 /* Assets.xcassets */,
+				B0513D3020295C6600B5C0C2 /* LaunchScreen.storyboard */,
+				B0513D3320295C6600B5C0C2 /* Info.plist */,
 			);
 			path = FTD;
 			sourceTree = "<group>";
@@ -76,13 +76,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B0387E1A201F1BA0004A0343 /* FTD */ = {
+		B0513D1D20295C6600B5C0C2 /* FTD */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B0387E33201F1BA0004A0343 /* Build configuration list for PBXNativeTarget "FTD" */;
+			buildConfigurationList = B0513D3620295C6600B5C0C2 /* Build configuration list for PBXNativeTarget "FTD" */;
 			buildPhases = (
-				B0387E17201F1BA0004A0343 /* Sources */,
-				B0387E18201F1BA0004A0343 /* Frameworks */,
-				B0387E19201F1BA0004A0343 /* Resources */,
+				B0513D1A20295C6600B5C0C2 /* Sources */,
+				B0513D1B20295C6600B5C0C2 /* Frameworks */,
+				B0513D1C20295C6600B5C0C2 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -90,26 +90,26 @@
 			);
 			name = FTD;
 			productName = FTD;
-			productReference = B0387E1B201F1BA0004A0343 /* FTD.app */;
+			productReference = B0513D1E20295C6600B5C0C2 /* FTD.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		B0387E13201F1BA0004A0343 /* Project object */ = {
+		B0513D1620295C6600B5C0C2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = Ephemerality;
 				TargetAttributes = {
-					B0387E1A201F1BA0004A0343 = {
+					B0513D1D20295C6600B5C0C2 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = B0387E16201F1BA0004A0343 /* Build configuration list for PBXProject "FTD" */;
+			buildConfigurationList = B0513D1920295C6600B5C0C2 /* Build configuration list for PBXProject "FTD" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -117,57 +117,57 @@
 				en,
 				Base,
 			);
-			mainGroup = B0387E12201F1BA0004A0343;
-			productRefGroup = B0387E1C201F1BA0004A0343 /* Products */;
+			mainGroup = B0513D1520295C6600B5C0C2;
+			productRefGroup = B0513D1F20295C6600B5C0C2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B0387E1A201F1BA0004A0343 /* FTD */,
+				B0513D1D20295C6600B5C0C2 /* FTD */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B0387E19201F1BA0004A0343 /* Resources */ = {
+		B0513D1C20295C6600B5C0C2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0387E2A201F1BA0004A0343 /* Main.storyboard in Resources */,
-				B0387E21201F1BA0004A0343 /* GameScene.sks in Resources */,
-				B0387E2C201F1BA0004A0343 /* Assets.xcassets in Resources */,
-				B0387E2F201F1BA0004A0343 /* LaunchScreen.storyboard in Resources */,
-				B0387E23201F1BA0004A0343 /* Actions.sks in Resources */,
+				B0513D2D20295C6600B5C0C2 /* Main.storyboard in Resources */,
+				B0513D2420295C6600B5C0C2 /* GameScene.sks in Resources */,
+				B0513D2F20295C6600B5C0C2 /* Assets.xcassets in Resources */,
+				B0513D3220295C6600B5C0C2 /* LaunchScreen.storyboard in Resources */,
+				B0513D2620295C6600B5C0C2 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B0387E17201F1BA0004A0343 /* Sources */ = {
+		B0513D1A20295C6600B5C0C2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0387E25201F1BA0004A0343 /* GameScene.swift in Sources */,
-				B0387E27201F1BA0004A0343 /* GameViewController.swift in Sources */,
-				B0387E1F201F1BA0004A0343 /* AppDelegate.swift in Sources */,
+				B0513D2820295C6600B5C0C2 /* GameScene.swift in Sources */,
+				B0513D2A20295C6600B5C0C2 /* GameViewController.swift in Sources */,
+				B0513D2220295C6600B5C0C2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B0387E28201F1BA0004A0343 /* Main.storyboard */ = {
+		B0513D2B20295C6600B5C0C2 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B0387E29201F1BA0004A0343 /* Base */,
+				B0513D2C20295C6600B5C0C2 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		B0387E2D201F1BA0004A0343 /* LaunchScreen.storyboard */ = {
+		B0513D3020295C6600B5C0C2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B0387E2E201F1BA0004A0343 /* Base */,
+				B0513D3120295C6600B5C0C2 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -175,7 +175,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		B0387E31201F1BA0004A0343 /* Debug */ = {
+		B0513D3420295C6600B5C0C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -232,7 +232,7 @@
 			};
 			name = Debug;
 		};
-		B0387E32201F1BA0004A0343 /* Release */ = {
+		B0513D3520295C6600B5C0C2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -282,7 +282,7 @@
 			};
 			name = Release;
 		};
-		B0387E34201F1BA0004A0343 /* Debug */ = {
+		B0513D3720295C6600B5C0C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -296,7 +296,7 @@
 			};
 			name = Debug;
 		};
-		B0387E35201F1BA0004A0343 /* Release */ = {
+		B0513D3820295C6600B5C0C2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -313,25 +313,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B0387E16201F1BA0004A0343 /* Build configuration list for PBXProject "FTD" */ = {
+		B0513D1920295C6600B5C0C2 /* Build configuration list for PBXProject "FTD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B0387E31201F1BA0004A0343 /* Debug */,
-				B0387E32201F1BA0004A0343 /* Release */,
+				B0513D3420295C6600B5C0C2 /* Debug */,
+				B0513D3520295C6600B5C0C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B0387E33201F1BA0004A0343 /* Build configuration list for PBXNativeTarget "FTD" */ = {
+		B0513D3620295C6600B5C0C2 /* Build configuration list for PBXNativeTarget "FTD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B0387E34201F1BA0004A0343 /* Debug */,
-				B0387E35201F1BA0004A0343 /* Release */,
+				B0513D3720295C6600B5C0C2 /* Debug */,
+				B0513D3820295C6600B5C0C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = B0387E13201F1BA0004A0343 /* Project object */;
+	rootObject = B0513D1620295C6600B5C0C2 /* Project object */;
 }
