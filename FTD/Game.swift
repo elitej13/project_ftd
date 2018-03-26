@@ -15,19 +15,19 @@ class Game {
     var Rooms = [Room]()
 
     init() {
-        Crew.Append(Entity(#imageLiteral(resourceName: "waypoint_node"), -100, 50, 32, 64))
-        Crew.Append(Entity(#imageLiteral(resourceName: "waypoint_node"), 0, 50, 32, 64))
-        Crew.Append(Entity(#imageLiteral(resourceName: "waypoint_node"), 100, 50, 32, 64))
+        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: -100, y: 50, w: 32, h: 64))
+        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: -100, y: 50, w: 32, h: 64))
+        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: -100, y: 50, w: 32, h: 64))
 
-        Rooms.Append(Room(Room.Name.PILOT, #imageLiteral(resourceName: "galaxy"), 150, 0, 100, 100)) 
-        Rooms.Append(Room(Room.Name.SHIELD, #imageLiteral(resourceName: "galaxy"), 50, 50, 100, 100))
-        Rooms.Append(Room(Room.Name.LASER, #imageLiteral(resourceName: "galaxy"), 50, -50, 100, 100))
-        Rooms.Append(Room(Room.Name.ENGINE, #imageLiteral(resourceName: "galaxy"), -50, -50, 100, 100))
-        Rooms.Append(Room(Room.Name.UTILITY, #imageLiteral(resourceName: "galaxy"), -50, 50, 100, 100))
+        Rooms.append(Room(type: Room.Name.PILOT, image: #imageLiteral(resourceName: "galaxy"), x: 150, y: 0, w: 100, h: 100))
+        Rooms.append(Room(type: Room.Name.SHIELD, image: #imageLiteral(resourceName: "galaxy"), x: 50, y: 50, w: 100, h: 100))
+        Rooms.append(Room(type: Room.Name.LASER, image: #imageLiteral(resourceName: "galaxy"), x: 50, y: -50, w: 100, h: 100))
+        Rooms.append(Room(type: Room.Name.ENGINE, image: #imageLiteral(resourceName: "galaxy"), x: -50, y:-50, w: 100, h: 100))
+        Rooms.append(Room(type: Room.Name.UTILITY, image: #imageLiteral(resourceName: "galaxy"), x: -50, y: 50, w: 100, h: 100))
     }
 
     func Add_Children(GameScene:SKScene) {
-        for ent in Entities {
+        for ent in Crew {
             GameScene.addChild(ent.Sprite)
         }
         for room in Rooms {

@@ -14,8 +14,10 @@ class Entity {
     var Sprite:SKSpriteNode
     var Actions:[SKAction]
     
-    init(image: SKImage, x:CGFloat, y: CGFloat, w: CGFloat, h: CGFloat) {
-        Sprite = SKSpriteNode(texture: SKTexture(image: image), x:x, y:y, w:w, h:h)
+    init(image: UIImage, x:CGFloat, y: CGFloat, w: CGFloat, h: CGFloat) {
+        Sprite = SKSpriteNode(texture: SKTexture(image: image))
+        Sprite.position = CGPoint(x:x, y:y)
+        Sprite.size = CGSize(width:w, height:h)
         Actions = [SKAction]()
     }
     func Update() {

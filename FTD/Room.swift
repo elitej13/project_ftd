@@ -23,11 +23,11 @@ class Room {
     var present_crew = [Entity]()
     var Sprite:SKSpriteNode
 
-    init(type: Name, image: SKImage, x:CGFloat, y: CGFloat, w: CGFloat, h: CGFloat) {
-        Sprite = SKSpriteNode(texture: SKTexture(image: image), x:x, y:y, w:w, h:h)
+    init(type: Name, image: UIImage, x:CGFloat, y: CGFloat, w: CGFloat, h: CGFloat) {
+        Sprite = SKSpriteNode(texture: SKTexture(image: image))
+        Sprite.position = CGPoint(x:x, y:y)
+        Sprite.size = CGSize(width:w, height:h)
         name = type
-
-
     }
 
     func Add_Crew(crew: Entity) {
