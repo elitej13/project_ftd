@@ -22,14 +22,14 @@ class Entity {
         Sprite.size = CGSize(width:w, height:h)
         Actions = [SKAction]()
         Present_Room = room
-        Present_Room.Add_Crew(self)
+        Present_Room.Add_Crew(crew: self)
     }
     func Update() {
         for act in Actions{
             Sprite.run(act)
         }
     }
-    func Move(x: CGFloat, y: CGFloat, d: CGFloat) {
+    func Move(x: CGFloat, y: CGFloat, d: Double) {
         let hMove = SKAction.moveTo(x: x, duration: d)
         let vMove = SKAction.moveTo(y: y, duration: d)
         Actions.append(hMove)
@@ -37,9 +37,9 @@ class Entity {
     }
     func Move_To_Room(room: Room) {
         //TODO: Remove buffs
-        Present_Room.Remove_Crew_Member(self)
+        Present_Room.Remove_Crew_Member(crew: self)
         //TODO: Add in buffs
         Present_Room = room
-        Present_Room.Add_Crew(self)
+        Present_Room.Add_Crew(crew: self)
     }
 }

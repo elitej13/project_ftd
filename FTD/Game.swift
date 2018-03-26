@@ -14,7 +14,7 @@ class Game {
     var Crew = [Entity]()
     var Rooms = [Room]()
     var Selection: SKSpriteNode
-    var Active: (isActive: Bool, isCrew: Bool, crew: Entity?, room: Room?)
+    var Active: (isActive: Bool, isCrew: Bool, crew: Entity, room: Room)
     var Ship: SKSpriteNode
     var Background: SKSpriteNode
 
@@ -43,7 +43,7 @@ class Game {
         Selection.size = CGSize(width: 16, height: 16)
         Selection.zPosition = 4
 
-        Active = (isActive: false, isCrew: false, crew: nil, room: nil)
+        Active = (isActive: false, isCrew: false, crew: Crew[0], room: Rooms[0])
     }
 
     func Add_Children(GameScene:SKScene) {
@@ -64,16 +64,16 @@ class Game {
         }
     }
     func touchDown(atPoint pos : CGPoint) {
-        if let ent = Get_Crew_At_Pos(pos) {
+        if let ent = Get_Crew_At_Pos(pos: pos) {
             //Show info
             Active.isActive = true
             Active.isCrew = true
             Active.crew = ent
         }
-        else if let room = Get_Room_At_Pos(pos) {
+        else if let room = Get_Room_At_Pos(pos: pos) {
             if Active.isActive {
                 if Active.isCrew {
-                    Active.crew.Move_To(room)
+                    Active.crew.Move_To_Room(room: room)
                 }else {
                     Active.isCrew = false
                     Active.room = room
