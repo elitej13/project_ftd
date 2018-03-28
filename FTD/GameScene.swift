@@ -20,23 +20,13 @@ class GameScene: SKScene {
     private var lastUpdateTime : TimeInterval = 0
     private var background: SKSpriteNode?
     private var node: SKSpriteNode?
+
+    private var game: Game = Game()
     
     override func sceneDidLoad() {
-        init_overworld()
+        game.Add_Children(GameScene: self)
     }
-    
-    func init_overworld() {
-        background = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy")))
-        node = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "waypoint_node")))
-        node?.size.width = 100
-        node?.size.height = 100
-        
-        
-        self.addChild(background!)
-        self.addChild(node!)
-    }
-    
-    
+   
     func touchDown(atPoint pos : CGPoint) {
         
     }
@@ -81,6 +71,8 @@ class GameScene: SKScene {
         for entity in self.entities {
             entity.update(deltaTime: dt)
         }
+        //Update Game
+        game.Update();     
         
         self.lastUpdateTime = currentTime
     }
