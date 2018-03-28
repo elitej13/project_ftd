@@ -25,7 +25,8 @@ class Room {
 
     init(type: Name, image: UIImage, x:CGFloat, y: CGFloat, w: CGFloat, h: CGFloat) {
         Sprite = SKSpriteNode(texture: SKTexture(image: image))
-        Sprite.position = CGPoint(x:x, y:y)
+        Sprite.position = CGPoint(x:x - 200, y:y)
+        Sprite.zPosition = 2
         Sprite.size = CGSize(width:w, height:h)
         name = type
     }

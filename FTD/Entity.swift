@@ -17,6 +17,7 @@ class Entity {
     init(image: UIImage, x:CGFloat, y: CGFloat, w: CGFloat, h: CGFloat) {
         Sprite = SKSpriteNode(texture: SKTexture(image: image))
         Sprite.position = CGPoint(x:x, y:y)
+        Sprite.zPosition = 3
         Sprite.size = CGSize(width:w, height:h)
         Actions = [SKAction]()
     }

@@ -14,17 +14,33 @@ class Game {
     var Crew = [Entity]()
     var Rooms = [Room]()
     var Selection: SKSpriteNode
+    var Ship: SKSpriteNode
+    var Background: SKSpriteNode
 
     init() {
-        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: -100, y: 50, w: 32, h: 64))
-        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: -100, y: 50, w: 32, h: 64))
-        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: -100, y: 50, w: 32, h: 64))
+        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: -100, y: 50, w: 16, h: 32))
+        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: 0, y: 50, w: 8, h: 16))
+        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: 100, y: 50, w: 32, h: 64))
 
-        Rooms.append(Room(type: Room.Name.PILOT, image: #imageLiteral(resourceName: "galaxy"), x: 150, y: 0, w: 100, h: 100))
-        Rooms.append(Room(type: Room.Name.SHIELD, image: #imageLiteral(resourceName: "galaxy"), x: 50, y: 50, w: 100, h: 100))
-        Rooms.append(Room(type: Room.Name.LASER, image: #imageLiteral(resourceName: "galaxy"), x: 50, y: -50, w: 100, h: 100))
-        Rooms.append(Room(type: Room.Name.ENGINE, image: #imageLiteral(resourceName: "galaxy"), x: -50, y:-50, w: 100, h: 100))
-        Rooms.append(Room(type: Room.Name.UTILITY, image: #imageLiteral(resourceName: "galaxy"), x: -50, y: 50, w: 100, h: 100))
+        Rooms.append(Room(type: Room.Name.PILOT, image: #imageLiteral(resourceName: "floor"), x: 150, y: 0, w: 100, h: 100))
+        Rooms.append(Room(type: Room.Name.SHIELD, image: #imageLiteral(resourceName: "floor"), x: 50, y: 50, w: 100, h: 100))
+        Rooms.append(Room(type: Room.Name.LASER, image: #imageLiteral(resourceName: "floor"), x: 50, y: -50, w: 100, h: 100))
+        Rooms.append(Room(type: Room.Name.ENGINE, image: #imageLiteral(resourceName: "floor"), x: -50, y:-50, w: 100, h: 100))
+        Rooms.append(Room(type: Room.Name.UTILITY, image: #imageLiteral(resourceName: "floor"), x: -50, y: 50, w: 100, h: 100))
+        
+        Background = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy")))
+        Background.position = CGPoint(x: 0, y: 0)
+        Background.zPosition = 0
+        
+        Ship = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Ship")))
+        Ship.position = CGPoint(x: -200, y: 0)
+        Ship.size = CGSize(width: 350, height: 300)
+        Ship.zPosition = 1
+        
+        Selection = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "waypoint_node")))
+        Selection.position = CGPoint(x: -200, y: -200)
+        Selection.size = CGSize(width: 16, height: 16)
+        Selection.zPosition = 4
     }
 
     func Add_Children(GameScene:SKScene) {
@@ -34,13 +50,20 @@ class Game {
         for room in Rooms {
             GameScene.addChild(room.Sprite)
         }
+        //Background.size = CGSize(width: GameScene.size.width, height: GameScene.size.height)
+        GameScene.addChild(Background)
+        GameScene.addChild(Selection)
+        GameScene.addChild(Ship)
     }
     func Update() {
         for ent in Crew {
             ent.Update()
         }
     }
-    func Is_In_Bounds(node: SPSpriteNode, pos: CGPoint)->Bool {
+    func touchDown(atPoint pos : CGPoint) {
+        
+    }
+    func Is_In_Bounds(node: SKSpriteNode, pos: CGPoint)->Bool {
         let x0 = node.position.x
         let y0 = node.position.y
         let x1 = x0 + node.size.width
@@ -63,7 +86,7 @@ class Game {
         return nil;
     }
     func Get_Room_At_Pos(pos: CGPoint)->Room?{
-        for r in Room {
+        for r in Rooms {
             if(Is_In_Bounds(node: r.Sprite, pos: pos)) {
                 return r;
             }
