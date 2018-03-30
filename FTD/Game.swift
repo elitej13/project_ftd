@@ -25,9 +25,9 @@ class Game {
         Rooms.append(Room(type: Room.Name.ENGINE, image: #imageLiteral(resourceName: "floor"), x: -50, y:-50, w: 100, h: 100))
         Rooms.append(Room(type: Room.Name.UTILITY, image: #imageLiteral(resourceName: "floor"), x: -50, y: 50, w: 100, h: 100))
         
-        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: -100, y: 50, w: 16, h: 32, room: Rooms[0]))
-        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: 0, y: 50, w: 8, h: 16, room: Rooms[1]))
-        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: 100, y: 50, w: 32, h: 64, room: Rooms[2]))
+        Crew.append(Entity(image: #imageLiteral(resourceName: "crew"), x: -100, y: 50, w: 16, h: 16, room: Rooms[0]))
+        Crew.append(Entity(image: #imageLiteral(resourceName: "crew"), x: 0, y: 50, w: 16, h: 16, room: Rooms[1]))
+        Crew.append(Entity(image: #imageLiteral(resourceName: "crew"), x: 100, y: 50, w: 16, h: 16, room: Rooms[2]))
         
         Background = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy")))
         Background.position = CGPoint(x: 0, y: 0)
