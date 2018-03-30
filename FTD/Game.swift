@@ -14,19 +14,20 @@ class Game {
     var Crew = [Entity]()
     var Rooms = [Room]()
     var Selection: SKSpriteNode
+    var Active: (isActive: Bool, isCrew: Bool, crew: Entity?, room: Room?)
     var Ship: SKSpriteNode
     var Background: SKSpriteNode
 
     init() {
-        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: -100, y: 50, w: 16, h: 32))
-        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: 0, y: 50, w: 8, h: 16))
-        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: 100, y: 50, w: 32, h: 64))
-
         Rooms.append(Room(type: Room.Name.PILOT, image: #imageLiteral(resourceName: "floor"), x: 150, y: 0, w: 100, h: 100))
         Rooms.append(Room(type: Room.Name.SHIELD, image: #imageLiteral(resourceName: "floor"), x: 50, y: 50, w: 100, h: 100))
         Rooms.append(Room(type: Room.Name.LASER, image: #imageLiteral(resourceName: "floor"), x: 50, y: -50, w: 100, h: 100))
         Rooms.append(Room(type: Room.Name.ENGINE, image: #imageLiteral(resourceName: "floor"), x: -50, y:-50, w: 100, h: 100))
         Rooms.append(Room(type: Room.Name.UTILITY, image: #imageLiteral(resourceName: "floor"), x: -50, y: 50, w: 100, h: 100))
+        
+        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: -100, y: 50, w: 16, h: 32, room: Rooms[0]))
+        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: 0, y: 50, w: 8, h: 16, room: Rooms[1]))
+        Crew.append(Entity(image: #imageLiteral(resourceName: "waypoint_node"), x: 100, y: 50, w: 32, h: 64, room: Rooms[2]))
         
         Background = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy")))
         Background.position = CGPoint(x: 0, y: 0)
@@ -41,6 +42,8 @@ class Game {
         Selection.position = CGPoint(x: -200, y: -200)
         Selection.size = CGSize(width: 16, height: 16)
         Selection.zPosition = 4
+
+        Active = (isActive: false, isCrew: false, crew: nil, room: nil)
     }
 
     func Add_Children(GameScene:SKScene) {
@@ -61,7 +64,30 @@ class Game {
         }
     }
     func touchDown(atPoint pos : CGPoint) {
-        
+        if let ent = Get_Crew_At_Pos(pos) {
+            //Show info
+            Active.isActive = true
+            Active.isCrew = true
+            Active.crew = ent
+        }
+        else if let room = Get_Room_At_Pos(pos) {
+            if Active.isActive {
+                if Active.isCrew {
+                    Active.crew.Move_To(room)
+                }else {
+                    Active.isCrew = false
+                    Active.room = room
+                }
+            }else {
+                Active.isActive = true
+                Active.isCrew = false
+                Active.room = room
+            }
+        }
+        else {
+            //Void selection
+            Active.isActive = false
+        }
     }
     func Is_In_Bounds(node: SKSpriteNode, pos: CGPoint)->Bool {
         let x0 = node.position.x

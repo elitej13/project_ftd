@@ -32,7 +32,25 @@ class Room {
     }
 
     func Add_Crew(crew: Entity) {
-
+        if(present_crew.coun < 4) {
+            var x = Sprite.position.x
+            var y = Sprite.position.y
+            x = (present_crew.count == 0 || present_crew.count == 2) ? x - 20 : x + 20;
+            y = (present_crew.count > 1) ? y - 20 : y + 20
+            crew.Move(x: x, y: y, d: 0.25)
+            present_crew.append(crew)
+        }
+    }
+    func Remove_Crew_Member(crew: Entity) {
+        present_crew.remove(crew);
+        let tmp = [Entity]()
+        for e in present_crew {
+            tmp.append(e)
+            present_crew.remove(e)
+        }
+        for e in tmp {
+            Add_Crew(crew: e)
+        }
     }
 
 
