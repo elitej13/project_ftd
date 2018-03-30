@@ -14,6 +14,7 @@ class Game {
     var Crew = [Entity]()
     var Rooms = [Room]()
     var Selection: SKSpriteNode
+    var Actions = [SKAction]()
     var Active: (isActive: Bool, isCrew: Bool, crew: Entity, room: Room)
     var Ship: SKSpriteNode
     var Background: SKSpriteNode
@@ -62,9 +63,13 @@ class Game {
         for ent in Crew {
             ent.Update()
         }
+        for act in Actions{
+            Selection.run(act)
+        }
     }
     func touchDown(atPoint pos : CGPoint) {
         if let ent = Get_Crew_At_Pos(pos: pos) {
+            print("Found ent")
             //Show info
             Active.isActive = true
             Active.isCrew = true
@@ -72,6 +77,7 @@ class Game {
             Move_Seletion_Frame(node: ent.Sprite)
         }
         else if let room = Get_Room_At_Pos(pos: pos) {
+            print("Found room")
             if Active.isActive {
                 if Active.isCrew {
                     Active.crew.Move_To_Room(room: room)
@@ -88,18 +94,19 @@ class Game {
             }
         }
         else {
+            print("Found nothing")
             //Void selection
             Active.isActive = false
             Move_Seletion_Frame_Off_Screen()
         }
     }    
     func Move_Seletion_Frame_Off_Screen() {
-        let move = SKAction.moveTo(to: CGPoint(-1000, -1000) , duration: 0.01)
+        let move = SKAction.move(to: CGPoint(x: -1000, y: -1000) , duration: 0.01)
         Actions.append(move)
     }
     func Move_Seletion_Frame(node: SKSpriteNode) {
-        let move = SKAction.moveTo(to: node.position , duration: 0.01)
-        let scale = SCAction.scale(to: node.size, duration: 0.01)
+        let move = SKAction.move(to: node.position , duration: 0.01)
+        let scale = SKAction.scale(to: node.size, duration: 0.01)
         Actions.append(move)
         Actions.append(scale)
     }

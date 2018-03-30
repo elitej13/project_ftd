@@ -11,9 +11,9 @@ import GameplayKit
 
 class Entity {
 
-    var Sprite:SKSpriteNode
+    public var Sprite:SKSpriteNode
     var Actions:[SKAction]
-    var Present_Room: Room
+    public var Present_Room: Room
     
     init(image: UIImage, x:CGFloat, y: CGFloat, w: CGFloat, h: CGFloat, room: Room) {
         Sprite = SKSpriteNode(texture: SKTexture(image: image))

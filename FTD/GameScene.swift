@@ -28,6 +28,7 @@ class GameScene: SKScene {
     }
    
     func touchDown(atPoint pos : CGPoint) {
+        print("Touch")
         game.touchDown(atPoint: pos)
     }
     
