@@ -38,8 +38,8 @@ class Game {
         Ship.size = CGSize(width: 350, height: 300)
         Ship.zPosition = 1
         
-        Selection = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "waypoint_node")))
-        Selection.position = CGPoint(x: -200, y: -200)
+        Selection = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "frame")))
+        Selection.position = CGPoint(x: -500, y: -500)
         Selection.size = CGSize(width: 16, height: 16)
         Selection.zPosition = 4
 
@@ -69,6 +69,7 @@ class Game {
             Active.isActive = true
             Active.isCrew = true
             Active.crew = ent
+            Move_Seletion_Frame(node: ent.Sprite)
         }
         else if let room = Get_Room_At_Pos(pos: pos) {
             if Active.isActive {
@@ -77,17 +78,30 @@ class Game {
                 }else {
                     Active.isCrew = false
                     Active.room = room
+                    Move_Seletion_Frame(node: room.Sprite)
                 }
             }else {
                 Active.isActive = true
                 Active.isCrew = false
                 Active.room = room
+                    Move_Seletion_Frame(node: room.Sprite)
             }
         }
         else {
             //Void selection
             Active.isActive = false
+            Move_Seletion_Frame_Off_Screen()
         }
+    }    
+    func Move_Seletion_Frame_Off_Screen() {
+        let move = SKAction.moveTo(to: CGPoint(-1000, -1000) , duration: 0.01)
+        Actions.append(move)
+    }
+    func Move_Seletion_Frame(node: SKSpriteNode) {
+        let move = SKAction.moveTo(to: node.position , duration: 0.01)
+        let scale = SCAction.scale(to: node.size, duration: 0.01)
+        Actions.append(move)
+        Actions.append(scale)
     }
     func Is_In_Bounds(node: SKSpriteNode, pos: CGPoint)->Bool {
         let x0 = node.position.x
