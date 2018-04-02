@@ -2,7 +2,7 @@
 //  GameViewController.swift
 //  FTD
 //
-//  Created by Josh Hess on 2/5/18.
+//  Created by Joshua Hess on 4/2/18.
 //  Copyright © 2018 Ephemerality. All rights reserved.
 //
 
@@ -41,18 +41,9 @@ class GameViewController: UIViewController {
             }
         }
     }
-    @IBAction func pan_performed(_ sender: UIPanGestureRecognizer) {
-//        if sender.state == .began || sender.state == .changed {
-//            let translation = sender.translation(in: sender.view)
-//            let dx = (sender.view?.center.x)! + translation.x
-//            let dy = (sender.view?.center.y)! + translation.y
-//
-//            sender.view?.center = CGPoint(x: dx, y: dy)
-//            sender.setTranslation(CGPoint.zero, in: sender.view)
-//        }
-    }
+
     override var shouldAutorotate: Bool {
-        return false
+        return true
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

@@ -35,9 +35,10 @@ class Room {
         if(present_crew.count < 4) {
             var x = Sprite.position.x
             var y = Sprite.position.y
-            x = (present_crew.count == 0 || present_crew.count == 2) ? x + 32 : x - 32;
-            y = (present_crew.count > 1) ? y + 32 : y - 32
-            crew.Move(x: x, y: y, d: 0.25)
+            x = (present_crew.count == 0 || present_crew.count == 2) ? x + Entity.SIZE : x - Entity.SIZE;
+            y = (present_crew.count > 1) ? y + Entity.SIZE : y - Entity.SIZE
+            print("Moving")
+            crew.Move(x: x, y: y, d: 0.125)
             present_crew.append(crew)
         }
     }
@@ -53,11 +54,5 @@ class Room {
             Add_Crew(crew: e)
         }
     }
-
-
-
-
-
-
 
 }

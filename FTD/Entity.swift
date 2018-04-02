@@ -11,16 +11,18 @@ import GameplayKit
 
 class Entity {
 
+    public static let SIZE : CGFloat = 32
     public var Sprite:SKSpriteNode
     var Actions:[SKAction]
     public var Present_Room: Room
     
-    init(image: UIImage, x:CGFloat, y: CGFloat, w: CGFloat, h: CGFloat, room: Room) {
+    init(image: UIImage, x:CGFloat, y: CGFloat, room: Room) {
         Sprite = SKSpriteNode(texture: SKTexture(image: image))
         Sprite.position = CGPoint(x:x, y:y)
         Sprite.zPosition = 3
-        Sprite.size = CGSize(width:w, height:h)
+        Sprite.size = CGSize(width: Entity.SIZE, height: Entity.SIZE)
         Actions = [SKAction]()
+        Sprite.zRotation = 3 * CGFloat.pi / 2
         Present_Room = room
         Present_Room.Add_Crew(crew: self)
     }

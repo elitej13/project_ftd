@@ -26,17 +26,17 @@ class Game {
         Rooms.append(Room(type: Room.Name.ENGINE, image: #imageLiteral(resourceName: "floor"), x: -50, y:-50, w: 100, h: 100))
         Rooms.append(Room(type: Room.Name.UTILITY, image: #imageLiteral(resourceName: "floor"), x: -50, y: 50, w: 100, h: 100))
         
-        Crew.append(Entity(image: #imageLiteral(resourceName: "crew"), x: -100, y: 50, w: 16, h: 16, room: Rooms[0]))
-        Crew.append(Entity(image: #imageLiteral(resourceName: "crew"), x: 0, y: 50, w: 16, h: 16, room: Rooms[1]))
-        Crew.append(Entity(image: #imageLiteral(resourceName: "crew"), x: 100, y: 50, w: 16, h: 16, room: Rooms[2]))
+        Crew.append(Entity(image: #imageLiteral(resourceName: "crew"), x: -100, y: 50, room: Rooms[0]))
+        Crew.append(Entity(image: #imageLiteral(resourceName: "crew"), x: 0, y: 50, room: Rooms[1]))
+        Crew.append(Entity(image: #imageLiteral(resourceName: "crew"), x: 100, y: 50, room: Rooms[2]))
         
         Background = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy")))
         Background.position = CGPoint(x: 0, y: 0)
         Background.zPosition = 0
         
         Ship = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Ship")))
-        Ship.position = CGPoint(x: -200, y: 0)
-        Ship.size = CGSize(width: 350, height: 300)
+        Ship.position = CGPoint(x: -125, y: 0)
+        Ship.size = CGSize(width: 500, height: 350)
         Ship.zPosition = 1
         
         Selection = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "frame")))
@@ -69,7 +69,6 @@ class Game {
     }
     func touchDown(atPoint pos : CGPoint) {
         if let ent = Get_Crew_At_Pos(pos: pos) {
-            print("Found ent")
             //Show info
             Active.isActive = true
             Active.isCrew = true
@@ -77,10 +76,11 @@ class Game {
             Move_Seletion_Frame(node: ent.Sprite)
         }
         else if let room = Get_Room_At_Pos(pos: pos) {
-            print("Found room")
             if Active.isActive {
                 if Active.isCrew {
                     Active.crew.Move_To_Room(room: room)
+                    Active.isActive = false
+                    Move_Seletion_Frame_Off_Screen()
                 }else {
                     Active.isCrew = false
                     Active.room = room
@@ -94,7 +94,6 @@ class Game {
             }
         }
         else {
-            print("Found nothing")
             //Void selection
             Active.isActive = false
             Move_Seletion_Frame_Off_Screen()
@@ -111,10 +110,10 @@ class Game {
         Actions.append(scale)
     }
     func Is_In_Bounds(node: SKSpriteNode, pos: CGPoint)->Bool {
-        let x0 = node.position.x
-        let y0 = node.position.y
-        let x1 = x0 + node.size.width
-        let y1 = y0 + node.size.height
+        let x0 = node.position.x - (node.size.width / 2)
+        let y0 = node.position.y - (node.size.height / 2)
+        let x1 = x0 + (node.size.width)
+        let y1 = y0 + (node.size.height)
         let betweenX:Bool = (pos.x > x0 && pos.x < x1) || (pos.x > x1 && pos.x < x0)
         let betweenY:Bool = (pos.y > y0 && pos.y < y1) || (pos.y > y1 && pos.y < y0)
         return betweenX && betweenY
