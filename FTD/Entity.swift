@@ -11,7 +11,7 @@ import GameplayKit
 
 class Entity {
 
-    public static let SIZE : CGFloat = 32
+    public static let SIZE : CGFloat = 24
     public var Sprite:SKSpriteNode
     var Actions:[SKAction]
     public var Present_Room: Room

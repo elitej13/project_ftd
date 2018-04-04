@@ -17,14 +17,24 @@ class Game {
     var Actions = [SKAction]()
     var Active: (isActive: Bool, isCrew: Bool, crew: Entity, room: Room)
     var Ship: SKSpriteNode
+    var EnemyShip: SKSpriteNode
     var Background: SKSpriteNode
 
     init() {
-        Rooms.append(Room(type: Room.Name.PILOT, image: #imageLiteral(resourceName: "floor"), x: 150, y: 0, w: 100, h: 100))
-        Rooms.append(Room(type: Room.Name.SHIELD, image: #imageLiteral(resourceName: "floor"), x: 50, y: 50, w: 100, h: 100))
-        Rooms.append(Room(type: Room.Name.LASER, image: #imageLiteral(resourceName: "floor"), x: 50, y: -50, w: 100, h: 100))
-        Rooms.append(Room(type: Room.Name.ENGINE, image: #imageLiteral(resourceName: "floor"), x: -50, y:-50, w: 100, h: 100))
-        Rooms.append(Room(type: Room.Name.UTILITY, image: #imageLiteral(resourceName: "floor"), x: -50, y: 50, w: 100, h: 100))
+        let base = #imageLiteral(resourceName: "floor")
+        let pilotico = #imageLiteral(resourceName: "pilot_icon")
+        let size = CGSize(width: base.size.width, height: base.size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        base.draw(in: CGRect(x:0, y:0, width: base.size.width, height: base.size.height));
+        pilotico.draw(in: CGRect(x:0, y:0, width: base.size.width, height: base.size.height));
+        let pilotRoom:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        Rooms.append(Room(type: Room.Name.PILOT, image: pilotRoom, x: 120, y: 0, w: 80, h: 80))
+        Rooms.append(Room(type: Room.Name.SHIELD, image: #imageLiteral(resourceName: "floor"), x: 40, y: 40, w: 80, h: 80))
+        Rooms.append(Room(type: Room.Name.LASER, image: #imageLiteral(resourceName: "floor"), x: 40, y: -40, w: 80, h: 80))
+        Rooms.append(Room(type: Room.Name.ENGINE, image: #imageLiteral(resourceName: "floor"), x: -40, y:-40, w: 80, h: 80))
+        Rooms.append(Room(type: Room.Name.UTILITY, image: #imageLiteral(resourceName: "floor"), x: -40, y: 40, w: 80, h: 80))
         
         Crew.append(Entity(image: #imageLiteral(resourceName: "crew"), x: -100, y: 50, room: Rooms[0]))
         Crew.append(Entity(image: #imageLiteral(resourceName: "crew"), x: 0, y: 50, room: Rooms[1]))
@@ -35,9 +45,14 @@ class Game {
         Background.zPosition = 0
         
         Ship = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Ship")))
-        Ship.position = CGPoint(x: -125, y: 0)
+        Ship.position = CGPoint(x: -150, y: 0)
         Ship.size = CGSize(width: 500, height: 350)
         Ship.zPosition = 1
+        
+        EnemyShip = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "enemy_ship_one")))
+        EnemyShip.position = CGPoint(x: 250, y: 0)
+        EnemyShip.size = CGSize(width: 200, height: 300)
+        EnemyShip.zPosition = 1
         
         Selection = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "frame")))
         Selection.position = CGPoint(x: -500, y: -500)
@@ -57,6 +72,7 @@ class Game {
         //Background.size = CGSize(width: GameScene.size.width, height: GameScene.size.height)
         GameScene.addChild(Background)
         GameScene.addChild(Selection)
+        GameScene.addChild(EnemyShip)
         GameScene.addChild(Ship)
     }
     func Update() {
