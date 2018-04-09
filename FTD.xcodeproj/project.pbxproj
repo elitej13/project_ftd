@@ -18,6 +18,7 @@
 		9F7B611D20727C52007FE76E /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B611C20727C52007FE76E /* Entity.swift */; };
 		9F7B611F20727C60007FE76E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B611E20727C60007FE76E /* Game.swift */; };
 		9F7B612120727D92007FE76E /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B612020727D91007FE76E /* Room.swift */; };
+		9F7C23B1207BC14400BCD25C /* Combat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C23B0207BC14400BCD25C /* Combat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		9F7B611C20727C52007FE76E /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		9F7B611E20727C60007FE76E /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		9F7B612020727D91007FE76E /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		9F7C23B0207BC14400BCD25C /* Combat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Combat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				9F7B611120727B6B007FE76E /* Assets.xcassets */,
 				9F7B611320727B6E007FE76E /* LaunchScreen.storyboard */,
 				9F7B611620727B73007FE76E /* Info.plist */,
+				9F7C23B0207BC14400BCD25C /* Combat.swift */,
 			);
 			path = FTD;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				9F7B610B20727B58007FE76E /* GameScene.swift in Sources */,
 				9F7B610D20727B58007FE76E /* GameViewController.swift in Sources */,
 				9F7B610520727B58007FE76E /* AppDelegate.swift in Sources */,
+				9F7C23B1207BC14400BCD25C /* Combat.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
