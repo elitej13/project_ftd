@@ -11,32 +11,52 @@ import GameplayKit
 
 class Game {
 
-    enum STATE {
+    public enum STATE {
         case OVERWORLD
         case COMBAT
         case STORY
         case SHOP
         case EXIT
     }
-    var Scene:SKScene
-    var State:STATE
-    var CombatScreen:Combat
+    var Scene: SKScene?
+    var State: STATE
+    var CombatScreen: Combat
+    var OverworldScreen: Overworld
 
     init() {
         State = STATE.COMBAT
-        CombatScreen = Combat()
+        CombatScreen = Combat(game: self)
+        OverworldScreen = Overworld(game: self)
     }
 
+    func Change_State(New:STATE) {
+        switch New {
+        case STATE.OVERWORLD:
+            Scene!.removeAllChildren()
+            OverworldScreen.Add_Children(GameScene: Scene!)
+            break
+        case STATE.COMBAT:
+            Scene!.removeAllChildren()
+            CombatScreen.Add_Children(GameScene: Scene!)
+            break
+        case STATE.STORY:
+            break
+        case STATE.SHOP:
+            break
+        case STATE.EXIT:
+            break
+        }
+    }
     func Add_Children(GameScene:SKScene) {
         Scene = GameScene
-        Combat.Add_Children(GameScene: GameScene)
+        Change_State(New:STATE.OVERWORLD)
     }
     func Update() {
         switch State {
         case STATE.OVERWORLD:
             break
         case STATE.COMBAT:
-            Combat.Update()
+            CombatScreen.Update()
             break
         case STATE.STORY:
             break

@@ -19,8 +19,10 @@ class Combat {
     var Ship: SKSpriteNode
     var EnemyShip: SKSpriteNode
     var Background: SKSpriteNode
+    var Master: Game;
     
-    init() {
+    init(game: Game) {
+        Master = game
         let base = #imageLiteral(resourceName: "floor")
         let pilotico = #imageLiteral(resourceName: "pilot_icon")
         let shieldico = #imageLiteral(resourceName: "shield")

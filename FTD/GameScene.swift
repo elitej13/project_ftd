@@ -13,7 +13,8 @@ class GameScene: SKScene {
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
-    private var game: Game = Game()
+    var game: Game = Game()
+    
     
     private var lastUpdateTime : TimeInterval = 0
     
