@@ -20,15 +20,11 @@ class Game {
     }
     var Scene: SKScene?
     var State: STATE
-    var CombatScreen: Combat
-    var OverworldScreen: Overworld
-
+    var CombatScreen: Combat?
+    var OverworldScreen: Overworld?
     init() {
         State = STATE.COMBAT
-        CombatScreen = Combat(game: self)
-        OverworldScreen = Overworld(game: self)
     }
-
     func Change_State(New:STATE) {
         switch New {
         case STATE.OVERWORLD:
@@ -49,6 +45,8 @@ class Game {
     }
     func Add_Children(GameScene:SKScene) {
         Scene = GameScene
+        CombatScreen = Combat(game: self)
+        OverworldScreen = Overworld(game: self)
         Change_State(New:STATE.OVERWORLD)
     }
     func Update() {
