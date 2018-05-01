@@ -58,7 +58,8 @@ class Overworld {
             Selection.run(act)
         }
     }
-    func touchDown(GameScene: SKScene, atPoint pos : CGPoint) {
+    func touchDown(atPoint pos : CGPoint) {
+        print("Touched in overworld")
         for node in Waypoints {
             let x0 = node.position.x
             let x1 = node.position.x + node.size.width
