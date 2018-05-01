@@ -55,7 +55,7 @@ class Combat {
         Crew.append(Entity(image: #imageLiteral(resourceName: "crew"), x: 0, y: 50, room: Rooms[1]))
         Crew.append(Entity(image: #imageLiteral(resourceName: "crew"), x: 100, y: 50, room: Rooms[2]))
         
-        Background = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy")))
+        Background = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy_pinkblack")))
         Background.position = CGPoint(x: 0, y: 0)
         Background.zPosition = 0
         

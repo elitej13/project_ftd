@@ -19,6 +19,7 @@ class GameScene: SKScene {
     private var lastUpdateTime : TimeInterval = 0
     
     override func sceneDidLoad() {
+        print("SceneDidLoad")
         game.Add_Children(GameScene: self)
     }
     

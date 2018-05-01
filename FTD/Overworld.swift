@@ -19,7 +19,7 @@ class Overworld {
     
     init(game: Game) {
         Master = game
-        Background = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy")))
+        Background = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy_red")))
         Background.position = CGPoint(x: 0, y: 0)
         Background.zPosition = 0
         
