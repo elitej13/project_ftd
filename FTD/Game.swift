@@ -26,14 +26,15 @@ class Game {
         State = STATE.COMBAT
     }
     func Change_State(New:STATE) {
+        State = New
         switch New {
         case STATE.OVERWORLD:
             Scene!.removeAllChildren()
-            OverworldScreen.Add_Children(GameScene: Scene!)
+            OverworldScreen!.Add_Children(GameScene: Scene!)
             break
         case STATE.COMBAT:
             Scene!.removeAllChildren()
-            CombatScreen.Add_Children(GameScene: Scene!)
+            CombatScreen!.Add_Children(GameScene: Scene!)
             break
         case STATE.STORY:
             break
@@ -52,9 +53,10 @@ class Game {
     func Update() {
         switch State {
         case STATE.OVERWORLD:
+            OverworldScreen?.Update()
             break
         case STATE.COMBAT:
-            CombatScreen.Update()
+            CombatScreen?.Update()
             break
         case STATE.STORY:
             break
@@ -65,6 +67,21 @@ class Game {
         }
     }
     func touchDown(atPoint pos : CGPoint) {
+        print("Touched in overworld")
+        switch State {
+        case STATE.OVERWORLD:
+            OverworldScreen?.touchDown(atPoint: pos)
+            break
+        case STATE.COMBAT:
+            CombatScreen?.touchDown(atPoint: pos)
+            break
+        case STATE.STORY:
+            break
+        case STATE.SHOP:
+            break
+        case STATE.EXIT:
+            break
+        }
     }
 
 }
