@@ -19,10 +19,14 @@ class Combat {
     var Ship: SKSpriteNode
     var EnemyShip: SKSpriteNode
     var Background: SKSpriteNode
-    var Master: Game;
+    var UI: CombatUI?
+    var Inf: CombatInfo
+    var Master: Game
     
     init(game: Game) {
         Master = game
+        Inf = CombatInfo()
+
         let base = #imageLiteral(resourceName: "floor")
         let pilotico = #imageLiteral(resourceName: "pilot_icon")
         let shieldico = #imageLiteral(resourceName: "shield")
@@ -34,11 +38,13 @@ class Combat {
         pilotico.draw(in: CGRect(x:base.size.width / 4, y:base.size.height / 4, width: base.size.width / 2, height: base.size.height / 2));
         let pilotRoom:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
+
         UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
         base.draw(in: CGRect(x:0, y:0, width: base.size.width, height: base.size.height));
         shieldico.draw(in: CGRect(x:base.size.width / 4, y:base.size.height / 4, width: base.size.width / 2, height: base.size.height / 2));
         let shieldRoom:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
+
         UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
         base.draw(in: CGRect(x:0, y:0, width: base.size.width, height: base.size.height));
         engineerico.draw(in: CGRect(x:base.size.width / 4, y:base.size.height / 4, width: base.size.width / 2, height: base.size.height / 2));
@@ -78,6 +84,7 @@ class Combat {
     }
     
     func Add_Children(GameScene:SKScene) {
+        UI = CombatUI(master: self)
         for ent in Crew {
             GameScene.addChild(ent.Sprite)
         }
@@ -91,6 +98,9 @@ class Combat {
         GameScene.addChild(Ship)
     }
     func Update() {
+        CombatInfo.Update()
+        CombatUI?.Update()
+
         for ent in Crew {
             ent.Update()
         }
@@ -98,7 +108,13 @@ class Combat {
             Selection.run(act)
         }
     }
-    func touchDown(atPoint pos : CGPoint) {
+    func touchDown(atPoint pos: CGPoint) {
+        //First check for UI input
+        if UI.touchDown(atPoint: pos) {
+            return
+        }
+
+        //Then check for entity or room presses
         if let ent = Get_Crew_At_Pos(pos: pos) {
             //Show info
             Active.isActive = true
@@ -169,6 +185,18 @@ class Combat {
             }
         }
         return nil;
+    }
+
+
+    func ToggleShield() {
+        Inf.ShieldActive = !Inf.ShieldActive
+        print("Shield status \(Inf.ShieldActive)")
+    }
+    func FireMissile() {
+        print("Missile fired")
+    }
+    func FireLaser() {
+        print("Laser fired")
     }
 }
 
