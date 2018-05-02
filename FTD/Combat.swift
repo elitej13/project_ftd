@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import Darwin
 
 class Combat {
     
@@ -15,13 +16,10 @@ class Combat {
     var Rooms = [Room]()
     
     var Select_Actions = [SKAction]()
-
     var Shield_Actions = [SKAction]()
     var EShield_Actions = [SKAction]()
-
     var Laser_Actions = [SKAction]()
     var Missile_Actions = [SKAction]()
-
     var ELaser_Actions = [SKAction]()
     var EMissile_Actions = [SKAction]()
 
@@ -38,6 +36,8 @@ class Combat {
     var Background: SKSpriteNode
     var Selection: SKSpriteNode
 
+    var EnemyTurnTimer: Int
+    
     var UI: CombatUI?
     var Inf: CombatInfo
     var Master: Game
@@ -116,23 +116,27 @@ class Combat {
         //Goes to 250, 0
         Laser = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "laser")))
         Laser.position = CGPoint(x: -160, y: -150)
-        Laser.size = CGSize(width: 100, height: 24)
+        Laser.size = CGSize(width: 100, height: 16)
         Laser.zPosition = 6
+        Laser.zRotation = CGFloat(Double.pi / 6.0)
         Missile = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "missile")))
         Missile.position = CGPoint(x: -150, y: 150)
         Missile.size = CGSize(width: 100, height: 32)
         Missile.zPosition = 4
+        Missile.zRotation = CGFloat(Double.pi / 6.0 * 11.0)
         
         //Begins at 250+-30, 0
         //Goes to -100, 0
         EnemyLaser = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "laser")))
         EnemyLaser.position = CGPoint(x: 250, y: 0)
-        EnemyLaser.size = CGSize(width: 100, height: 24)
+        EnemyLaser.size = CGSize(width: 100, height: 16)
         EnemyLaser.zPosition = 6
+        EnemyLaser.xScale = -1
         EnemyMissile = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "missile")))
         EnemyMissile.position = CGPoint(x: 250, y: 0)
         EnemyMissile.size = CGSize(width: 100, height: 32)
         EnemyMissile.zPosition = 4
+        EnemyMissile.xScale = -1
         
         Background = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy_pinkblack")))
         Background.position = CGPoint(x: 0, y: 0)
@@ -143,6 +147,7 @@ class Combat {
         Selection.zPosition = 4
         
         Active = (isActive: false, isCrew: false, crew: Crew[0], room: Rooms[0])
+        EnemyTurnTimer = 100
     }
     
     func Add_Children(GameScene:SKScene) {
@@ -154,7 +159,6 @@ class Combat {
         for room in Rooms {
             GameScene.addChild(room.Sprite)
         }
-        //Background.size = CGSize(width: GameScene.size.width, height: GameScene.size.height)
         GameScene.addChild(Background)
         GameScene.addChild(Selection)
         GameScene.addChild(Ship)
@@ -171,6 +175,7 @@ class Combat {
         EnemyLaser.run(SKAction.fadeOut(withDuration: 0))
         EnemyMissile.run(SKAction.fadeOut(withDuration: 0))
     }
+    
     func Update() {
         Inf.Update()
         UI?.Update()
@@ -241,6 +246,22 @@ class Combat {
         }
         if !Inf.EnemyShieldActive && Inf.IsEShieldReady() {
             ToggleEShield()
+        }
+        if EnemyTurnTimer > 0 {
+            EnemyTurnTimer -= 1
+        }
+        else {
+            TakeEnemyTurn()
+            EnemyTurnTimer = 100
+        }
+    }
+    func TakeEnemyTurn() {
+        let rng = Int(arc4random_uniform(100))
+        if rng <= 80 {
+            EFireLaser()
+        }
+        else {
+            EFireMissile()
         }
     }
     //Touch input
@@ -336,6 +357,7 @@ class Combat {
             Inf.ShieldActive = false
             let fade = SKAction.fadeOut(withDuration: 0.5)
             Shield_Actions.append(fade)
+            Inf.ResetShieldTimer()
         }
         else {
             Inf.ShieldActive = true
@@ -349,6 +371,7 @@ class Combat {
             Inf.EnemyShieldActive = false
             let fade = SKAction.fadeOut(withDuration: 0.5)
             EShield_Actions.append(fade)
+            Inf.ResetEShieldTimer()
         }
         else {
             Inf.EnemyShieldActive = true
@@ -383,7 +406,7 @@ class Combat {
         if Inf.UseMissile() {
             //Begins at -150, +-150
             //Goes to 250, 0
-            let resetPos = SKAction.move(to: CGPoint(x: -155, y: 150), duration: 0)
+            let resetPos = SKAction.move(to: CGPoint(x: -160, y: 148), duration: 0)
             let fadein = SKAction.fadeIn(withDuration: 0)
             let shoot = SKAction.move(to: CGPoint(x: 250, y: -10), duration: 1)
             let fadeout = SKAction.fadeOut(withDuration: 0.1)
@@ -395,7 +418,7 @@ class Combat {
     func FireLaser() {
         //Begins at -150, +-150
         //Goes to 250, 0
-        let resetPos = SKAction.move(to: CGPoint(x: -155, y: -150), duration: 0)
+        let resetPos = SKAction.move(to: CGPoint(x: -160, y: -148), duration: 0)
         let fadein = SKAction.fadeIn(withDuration: 0)
         let shoot = SKAction.move(to: CGPoint(x: 250, y: -10), duration: 0.75)
         let fadeout = SKAction.fadeOut(withDuration: 0.1)

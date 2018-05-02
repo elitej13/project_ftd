@@ -88,7 +88,7 @@ class CombatInfo {
     }
     
     func ResetEShieldTimer() {
-        ShieldTimer = ShieldDelay
+        EShieldTimer = EShieldDelay
     }
     func ResetShieldTimer() {
         ShieldTimer = ShieldDelay
