@@ -113,23 +113,23 @@ class Combat {
         //Begins at -150, +-150
         //Goes to 250, 0
         Laser = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "laser")))
-        Laser.position = CGPoint(x: -150, y: 0)
-        Laser.size = CGSize(width: 32, height: 32)
+        Laser.position = CGPoint(x: -160, y: -150)
+        Laser.size = CGSize(width: 100, height: 24)
         Laser.zPosition = 6
         Missile = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "missile")))
-        Missile.position = CGPoint(x: -150, y: 0)
-        Missile.size = CGSize(width: 32, height: 32)
+        Missile.position = CGPoint(x: -150, y: 150)
+        Missile.size = CGSize(width: 100, height: 32)
         Missile.zPosition = 4
         
         //Begins at 250+-30, 0
         //Goes to -100, 0
         EnemyLaser = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "laser")))
         EnemyLaser.position = CGPoint(x: 250, y: 0)
-        EnemyLaser.size = CGSize(width: 32, height: 32)
+        EnemyLaser.size = CGSize(width: 100, height: 24)
         EnemyLaser.zPosition = 6
         EnemyMissile = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "missile")))
         EnemyMissile.position = CGPoint(x: 250, y: 0)
-        EnemyMissile.size = CGSize(width: 32, height: 32)
+        EnemyMissile.size = CGSize(width: 100, height: 32)
         EnemyMissile.zPosition = 4
         
         Background = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy_pinkblack")))
@@ -184,19 +184,44 @@ class Combat {
         }
         for act in Shield_Actions {
             Shield.run(act)
+            Shield_Actions.remove(at: 0)
         }
 
         for act in Laser_Actions {
-            Laser.run(act)
+            if !Laser.hasActions() {
+                Laser.run(act)
+                Laser_Actions.remove(at: 0)
+                break
+            }else {
+                break
+            }
         }
         for act in Missile_Actions {
-            Missile.run(act)
+            if !Missile.hasActions() {
+                Missile.run(act)
+                Missile_Actions.remove(at: 0)
+                break
+            }else {
+                break
+            }
         }
         for act in ELaser_Actions {
-            EnemyLaser.run(act)
+            if !EnemyLaser.hasActions() {
+                EnemyLaser.run(act)
+                ELaser_Actions.remove(at: 0)
+                break
+            }else {
+                break
+            }
         }
         for act in EMissile_Actions {
-            EnemyMissile.run(act)
+            if !EnemyMissile.hasActions() {
+                EnemyMissile.run(act)
+                EMissile_Actions.remove(at: 0)
+                break
+            }else {
+                break
+            }
         }
     }
     //Touch input
@@ -304,9 +329,9 @@ class Combat {
         if Inf.UseMissile() {
             //Begins at -150, +-150
             //Goes to 250, 0
-            let resetPos = SKAction.move(to: CGPoint(-150, 150), duration: 0)
-            let fadein = SKAction.fadeOut(withDuration: 0)
-            let shoot = SKAction.move(to: CGPoint(0, 250), duration: 0)
+            let resetPos = SKAction.move(to: CGPoint(x: -155, y: 150), duration: 0)
+            let fadein = SKAction.fadeIn(withDuration: 0)
+            let shoot = SKAction.move(to: CGPoint(x: 250, y: -10), duration: 1)
             let fadeout = SKAction.fadeOut(withDuration: 0.1)
             Missile_Actions.append(SKAction.sequence([resetPos, fadein, shoot, fadeout]))
         }
@@ -314,6 +339,9 @@ class Combat {
     }
     func FireLaser() {
         print("Laser fired")
+    }
+    func HitEnemy(isLaser: Bool) {
+        
     }
 }
 

@@ -32,9 +32,9 @@ class CombatInfo {
         ShieldActive = true
         EnemyShieldActive = true
 
-        ShieldTimer = 60
-        MissileTimer = 120
-        LaserTimer = 60
+        ShieldTimer = 0
+        MissileTimer = 0
+        LaserTimer = 0
         
         ShieldDelay = 60
         MissileDelay = 120
@@ -88,11 +88,11 @@ class CombatInfo {
         LaserTimer = LaserDelay
     }
 
-    func GetPlayerHealthProgress() {
-        return 1.0 - (Double(PlayerHealth) / Double(100.0))
+    func GetPlayerHealthProgress()->Double {
+        return (Double(PlayerHealth) / Double(100.0))
     }
-    func GetEnemyHealthProgress() {
-        return 1.0 - (Double(EnemyHealth) / Double(100.0))
+    func GetEnemyHealthProgress()->Double {
+        return (Double(EnemyHealth) / Double(100.0))
     }
 
     func DistributeBuffs(shield: Int, laser: Int, missile: Int) {

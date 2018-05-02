@@ -74,6 +74,7 @@
 		9F7B610320727B57007FE76E /* FTD */ = {
 			isa = PBXGroup;
 			children = (
+				9F7C23B0207BC14400BCD25C /* Combat.swift */,
 				B07676BD209937AC00409759 /* CombatInfo.swift */,
 				B07676BE209937AC00409759 /* CombatUI.swift */,
 				9F7B610420727B58007FE76E /* AppDelegate.swift */,
@@ -88,7 +89,6 @@
 				9F7B611120727B6B007FE76E /* Assets.xcassets */,
 				9F7B611320727B6E007FE76E /* LaunchScreen.storyboard */,
 				9F7B611620727B73007FE76E /* Info.plist */,
-				9F7C23B0207BC14400BCD25C /* Combat.swift */,
 				9F9D468F2084FA5E00A5ACC2 /* Overworld.swift */,
 			);
 			path = FTD;
