@@ -180,7 +180,7 @@ class Combat {
         }
         for act in Select_Actions {
             Selection.run(act)
-            Selection.remove(at: 0)
+            Select_Actions.remove(at: 0)
         }
         for act in Shield_Actions {
             if !Shield.hasActions() {
@@ -358,29 +358,25 @@ class Combat {
         print("Enemy shield status \(Inf.EnemyShieldActive)")
     }
     func EFireMissile() {
-        if Inf.UseMissile() {
-            //Begins at 250+-30, 0
-            //Goes to -100, 0
-            let resetPos = SKAction.move(to: CGPoint(x: 240, y: 0), duration: 0)
-            let fadein = SKAction.fadeIn(withDuration: 0)
-            let shoot = SKAction.move(to: CGPoint(x: -100, y: 0), duration: 1)
-            let fadeout = SKAction.fadeOut(withDuration: 0.1)
-            EMissile_Actions.append(SKAction.sequence([resetPos, fadein, shoot, fadeout]))
-            scheduleTimer(withTimerInverval: 1, repeats: false, block: { (timer) in HitPlayer(isLaser: false)})
-        }
+        //Begins at 250+-30, 0
+        //Goes to -100, 0
+        let resetPos = SKAction.move(to: CGPoint(x: 240, y: 0), duration: 0)
+        let fadein = SKAction.fadeIn(withDuration: 0)
+        let shoot = SKAction.move(to: CGPoint(x: -100, y: 0), duration: 1)
+        let fadeout = SKAction.fadeOut(withDuration: 0.1)
+        EMissile_Actions.append(SKAction.sequence([resetPos, fadein, shoot, fadeout]))
+        Timer.scheduledTimer( timeInterval: 1, target: self, selector: #selector(HitPlayerWithMissile), userInfo: nil, repeats: false)
         print("Enemy missile fired")
     }
     func EFireLaser() {
-        if Inf.UseMissile() {
-            //Begins at 250+-30, 0
-            //Goes to -100, 0
-            let resetPos = SKAction.move(to: CGPoint(x: 260, y: 0), duration: 0)
-            let fadein = SKAction.fadeIn(withDuration: 0)
-            let shoot = SKAction.move(to: CGPoint(x: -100, y: 0), duration: 0.75)
-            let fadeout = SKAction.fadeOut(withDuration: 0.1)
-            ELaser_Actions.append(SKAction.sequence([resetPos, fadein, shoot, fadeout]))
-            scheduleTimer(withTimerInverval: 0.75, repeats: false, block: { (timer) in HitPlayer(isLaser: true)})
-        }
+        //Begins at 250+-30, 0
+        //Goes to -100, 0
+        let resetPos = SKAction.move(to: CGPoint(x: 260, y: 0), duration: 0)
+        let fadein = SKAction.fadeIn(withDuration: 0)
+        let shoot = SKAction.move(to: CGPoint(x: -100, y: 0), duration: 0.75)
+        let fadeout = SKAction.fadeOut(withDuration: 0.1)
+        ELaser_Actions.append(SKAction.sequence([resetPos, fadein, shoot, fadeout]))
+        Timer.scheduledTimer( timeInterval: 1, target: self, selector: #selector(HitPlayerWithLaser), userInfo: nil, repeats: false)
         print("Enemy laser fired")
     }
     func FireMissile() {
@@ -392,50 +388,43 @@ class Combat {
             let shoot = SKAction.move(to: CGPoint(x: 250, y: -10), duration: 1)
             let fadeout = SKAction.fadeOut(withDuration: 0.1)
             Missile_Actions.append(SKAction.sequence([resetPos, fadein, shoot, fadeout]))
-            scheduleTimer(withTimerInverval: 1, repeats: false, block: { (timer) in HitEnemy(isLaser: false)})
+            Timer.scheduledTimer( timeInterval: 1, target: self, selector: #selector(HitEnemyWithMissile), userInfo: nil, repeats: false)
         }
         print("Missile fired")
     }
     func FireLaser() {
-        if Inf.UseMissile() {
-            //Begins at -150, +-150
-            //Goes to 250, 0
-            let resetPos = SKAction.move(to: CGPoint(x: -155, y: -150), duration: 0)
-            let fadein = SKAction.fadeIn(withDuration: 0)
-            let shoot = SKAction.move(to: CGPoint(x: 250, y: -10), duration: 0.75)
-            let fadeout = SKAction.fadeOut(withDuration: 0.1)
-            Laser_Actions.append(SKAction.sequence([resetPos, fadein, shoot, fadeout]))
-            scheduleTimer(withTimerInverval: 0.75, repeats: false, block: { (timer) in HitEnemy(isLaser: true)})
-        }
+        //Begins at -150, +-150
+        //Goes to 250, 0
+        let resetPos = SKAction.move(to: CGPoint(x: -155, y: -150), duration: 0)
+        let fadein = SKAction.fadeIn(withDuration: 0)
+        let shoot = SKAction.move(to: CGPoint(x: 250, y: -10), duration: 0.75)
+        let fadeout = SKAction.fadeOut(withDuration: 0.1)
+        Laser_Actions.append(SKAction.sequence([resetPos, fadein, shoot, fadeout]))
+        Timer.scheduledTimer( timeInterval: 1, target: self, selector: #selector(HitEnemyWithLaser), userInfo: nil, repeats: false)
         print("Laser fired")
     }
-    func HitEnemy(isLaser: Bool) {
-        if isLaser {
-            if Inf.EnemyShieldActive {
-                ToggleEShield()
-            }
-            else {
-                Inf.EnemyHealth -= 10
-            }
+    @objc func HitEnemyWithLaser() {
+        if Inf.EnemyShieldActive {
+            ToggleEShield()
         }
         else {
-
             Inf.EnemyHealth -= 10
-        } 
-    }    
-    func HitPlayer(isLaser: Bool) {
-        if isLaser {
-            if Inf.ShieldActive {
-                ToggleShield()
-            }
-            else {
-                Inf.PlayerHealth -= 10
-            }
+        }
+    }
+    @objc func HitEnemyWithMissile() {
+        Inf.EnemyHealth -= 10
+    }
+    @objc func HitPlayerWithLaser() {
+        if Inf.ShieldActive {
+            ToggleShield()
         }
         else {
-
             Inf.PlayerHealth -= 10
-        } 
+        }
     }
+    @objc func HitPlayerWithMissile() {
+            Inf.PlayerHealth -= 10
+    }
+
 }
 
