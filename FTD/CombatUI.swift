@@ -49,12 +49,12 @@ class CombatUI {
         Player_Health_BRD.zPosition = 6
 
 
-        Enemy_Health_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
+        Enemy_Health_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Health_PRG")))
         Enemy_Health_PRG.position = CGPoint(x: 260, y: 190)
         Enemy_Health_PRG.size = CGSize(width: 200, height: 25)
         Enemy_Health_PRG.zPosition = 7
 
-        Player_Health_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
+        Player_Health_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Health_PRG")))
         Player_Health_PRG.position = CGPoint(x: -260, y: 190)
         Player_Health_PRG.size = CGSize(width: 200, height: 25)
         Player_Health_PRG.zPosition = 7

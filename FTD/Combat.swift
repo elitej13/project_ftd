@@ -140,6 +140,7 @@ class Combat {
         
         Background = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy_pinkblack")))
         Background.position = CGPoint(x: 0, y: 0)
+        Background.size = CGSize(width: 1000, height: 600)
         Background.zPosition = 0
         Selection = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "frame")))
         Selection.position = CGPoint(x: -500, y: -500)
@@ -406,7 +407,7 @@ class Combat {
         if Inf.UseMissile() {
             //Begins at -150, +-150
             //Goes to 250, 0
-            let resetPos = SKAction.move(to: CGPoint(x: -160, y: 148), duration: 0)
+            let resetPos = SKAction.move(to: CGPoint(x: -185, y: 140), duration: 0)
             let fadein = SKAction.fadeIn(withDuration: 0)
             let shoot = SKAction.move(to: CGPoint(x: 250, y: -10), duration: 1)
             let fadeout = SKAction.fadeOut(withDuration: 0.1)
@@ -418,7 +419,7 @@ class Combat {
     func FireLaser() {
         //Begins at -150, +-150
         //Goes to 250, 0
-        let resetPos = SKAction.move(to: CGPoint(x: -160, y: -148), duration: 0)
+        let resetPos = SKAction.move(to: CGPoint(x: -185, y: -140), duration: 0)
         let fadein = SKAction.fadeIn(withDuration: 0)
         let shoot = SKAction.move(to: CGPoint(x: 250, y: -10), duration: 0.75)
         let fadeout = SKAction.fadeOut(withDuration: 0.1)
