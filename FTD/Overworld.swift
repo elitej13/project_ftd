@@ -60,14 +60,19 @@ class Overworld {
     }
     func touchDown(atPoint pos : CGPoint) {
         for node in Waypoints {
-            let x0 = node.position.x
-            let x1 = node.position.x + node.size.width
-            let y0 = node.position.y
-            let y1 = node.position.y + node.size.height
-            if pos.x < x1 && pos.x > x0 && pos.y < y1 && pos.y > y0{
+            if Is_In_Bounds(node: node, pos: pos) {
                 Master.Change_State(New: Game.STATE.COMBAT)
             }
         }
+    }
+    func Is_In_Bounds(node: SKSpriteNode, pos: CGPoint)->Bool {
+        let x0 = node.position.x - (node.size.width / 2)
+        let y0 = node.position.y - (node.size.height / 2)
+        let x1 = x0 + (node.size.width)
+        let y1 = y0 + (node.size.height)
+        let betweenX:Bool = (pos.x > x0 && pos.x < x1) || (pos.x > x1 && pos.x < x0)
+        let betweenY:Bool = (pos.y > y0 && pos.y < y1) || (pos.y > y1 && pos.y < y0)
+        return betweenX && betweenY
     }
     func Move_Seletion_Frame(x: CGFloat, y: CGFloat, duration: TimeInterval) {
         Actions.append(SKAction.move(to: CGPoint(x: x, y: y) , duration: duration))

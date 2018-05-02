@@ -35,6 +35,7 @@ class CombatInfo {
 
     func Update() {
         if ShieldTimer > 0 {
+            print("\(ShieldTimer)")
             ShieldTimer -= 1;
         }
         if MissileTimer > 0 {
@@ -55,14 +56,14 @@ class CombatInfo {
         return LaserTimer <= 0 ? true : false
     }
 
-    func GetShieldProgress()->Float {
-        return 1.0 - Float(ShieldTimer / ShieldDelay)
+    func GetShieldProgress()->Double {
+        return 1.0 - (Double(ShieldTimer) / Double(ShieldDelay))
     }
-    func GetMissileProgress()->Float {
-        return 1.0 - Float(MissileTimer / MissileDelay)
+    func GetMissileProgress()->Double {
+        return 1.0 - (Double(MissileTimer) / Double(MissileDelay))
     }
-    func GetLaserProgress()->Float {
-        return 1.0 - Float(LaserTimer / LaserDelay)
+    func GetLaserProgress()->Double {
+        return 1.0 - (Double(LaserTimer) / Double(LaserDelay))
     }
     
     func ResetShieldTimer() {
