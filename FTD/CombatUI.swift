@@ -95,21 +95,21 @@ class CombatUI {
         Shield_LBL = SKLabelNode(text: "Shields")
         Shield_LBL.position = CGPoint(x: -300, y: -185)
         Shield_LBL.fontColor = SKColor.black
-        Shield_LBL.fontName = "Marion-Bold"
+        Shield_LBL.fontName = "Marion"
         Shield_LBL.fontSize = 30
         Shield_LBL.zPosition = 8
         
         Missile_LBL = SKLabelNode(text: "Missiles")
         Missile_LBL.position = CGPoint(x: -150, y: -185)
         Missile_LBL.fontColor = SKColor.black
-        Missile_LBL.fontName = "Marion-Bold"
+        Missile_LBL.fontName = "Marion"
         Missile_LBL.fontSize = 30
         Missile_LBL.zPosition = 8
 
         Laser_LBL = SKLabelNode(text: "Lasers")
         Laser_LBL.position = CGPoint(x: 0, y: -185)
         Laser_LBL.fontColor = SKColor.black
-        Laser_LBL.fontName = "Marion-Bold"
+        Laser_LBL.fontName = "Marion"
         Laser_LBL.fontSize = 30
         Laser_LBL.zPosition = 8
     }
@@ -138,16 +138,19 @@ class CombatUI {
         Shield_PRG.size.width = CGFloat(Double(WIDTH_BTN) * Inf.GetShieldProgress())
         Missile_PRG.size.width = CGFloat(Double(WIDTH_BTN) * Inf.GetMissileProgress())
         Laser_PRG.size.width = CGFloat(Double(WIDTH_BTN)  * Inf.GetLaserProgress())
+
+        Enemy_Health_PRG.size.width = CGFloat(200.0  * Inf.GetEnemyHealthProgress())
+        Player_Health_PRG.size.width = CGFloat(200.0  * Inf.GetPlayerHealthProgress())
     }
 
     func touchDown(atPoint pos: CGPoint)->Bool {
-        if Is_In_Bounds(node: Shield_BTN, pos: pos) {
-            if Inf.IsShieldReady() {
-                Master.ToggleShield()
-                Inf.ResetShieldTimer()
-                return true
-            }
-        }
+        // if Is_In_Bounds(node: Shield_BTN, pos: pos) {
+        //     if Inf.IsShieldReady() {
+        //         Master.ToggleShield()
+        //         Inf.ResetShieldTimer()
+        //         return true
+        //     }
+        // }
         if Is_In_Bounds(node: Missile_BTN, pos: pos) {
             if Inf.IsMissileReady() {
                 Master.FireMissile()

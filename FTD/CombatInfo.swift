@@ -11,6 +11,14 @@ import GameplayKit
 
 class CombatInfo {
     
+    public var ShieldActive: Bool
+    public var EnemyShieldActive: Bool
+
+    public var PlayerHealth: Int
+    public var EnemyHealth: Int
+
+    var MissileCount: Int
+
     var ShieldTimer: Int
     var MissileTimer: Int
     var LaserTimer: Int
@@ -18,10 +26,12 @@ class CombatInfo {
     var ShieldDelay: Int
     var MissileDelay: Int
     var LaserDelay: Int
-    
-    public var ShieldActive: Bool
+
 
     init() {
+        ShieldActive = true
+        EnemyShieldActive = true
+
         ShieldTimer = 60
         MissileTimer = 120
         LaserTimer = 60
@@ -30,7 +40,10 @@ class CombatInfo {
         MissileDelay = 120
         LaserDelay = 60
         
-        ShieldActive = true
+        PlayerHealth = 100
+        EnemyHealth = 100
+
+        MissileCount = 5
     }
 
     func Update() {
@@ -66,13 +79,44 @@ class CombatInfo {
     }
     
     func ResetShieldTimer() {
-        ShieldTimer = ShieldDelay;
+        ShieldTimer = ShieldDelay
     }
     func ResetMissileTimer() {
-        MissileTimer = MissileDelay;
+        MissileTimer = MissileDelay
     }
     func ResetLaserTimer() {
-        LaserTimer = LaserDelay;
+        LaserTimer = LaserDelay
+    }
+
+    func GetPlayerHealthProgress() {
+        return 1.0 - (Double(PlayerHealth) / Double(100.0))
+    }
+    func GetEnemyHealthProgress() {
+        return 1.0 - (Double(EnemyHealth) / Double(100.0))
+    }
+
+    func DistributeBuffs(shield: Int, laser: Int, missile: Int) {
+        ShieldDelay = 60 - (shield * 15)
+        MissileDelay = 120 - (missile * 30)
+        LaserDelay = 60 - (laser * 15)
+
+        if ShieldTimer > ShieldDelay {
+            ShieldTimer = ShieldDelay
+        }
+        if MissileTimer > MissileDelay {
+            MissileTimer = MissileDelay
+        }
+        if LaserTimer > LaserDelay {
+            LaserTimer = LaserDelay
+        }
+    }
+
+    func UseMissile()->Bool {
+        if MissileCount > 0 {
+            MissileCount -= 1
+            return true
+        }
+        return false
     }
 
 }

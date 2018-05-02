@@ -53,5 +53,8 @@ class Room {
             Add_Crew(crew: e)
         }
     }
+    func GetCount()->Int {
+        return present_crew.count
+    }
 
 }
