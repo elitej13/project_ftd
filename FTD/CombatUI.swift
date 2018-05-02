@@ -33,55 +33,55 @@ class CombatUI {
         Inf = inf
         
         Shield_BTN = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_BTN")))
-        Shield_BTN.position = CGPoint(x: -300, y: -200)
+        Shield_BTN.position = CGPoint(x: -300, y: -175)
         Shield_BTN.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
         Shield_BTN.zPosition = 3
         
         Missile_BTN = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_BTN")))
-        Missile_BTN.position = CGPoint(x: -150, y: -200)
+        Missile_BTN.position = CGPoint(x: -150, y: -175)
         Missile_BTN.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
         Missile_BTN.zPosition = 3
 
         Laser_BTN = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_BTN")))
-        Laser_BTN.position = CGPoint(x: 0, y: -200)
+        Laser_BTN.position = CGPoint(x: 0, y: -175)
         Laser_BTN.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
         Laser_BTN.zPosition = 3
         
 
         Shield_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
-        Shield_PRG.position = CGPoint(x: -300, y: -200)
+        Shield_PRG.position = CGPoint(x: -300, y: -175)
         Shield_PRG.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
         Shield_PRG.zPosition = 4
         
         Missile_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
-        Missile_PRG.position = CGPoint(x: -150, y: -200)
+        Missile_PRG.position = CGPoint(x: -150, y: -175)
         Missile_PRG.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
         Missile_PRG.zPosition = 4
 
         Laser_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
-        Laser_PRG.position = CGPoint(x: 0, y: -200)
+        Laser_PRG.position = CGPoint(x: 0, y: -175)
         Laser_PRG.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
         Laser_PRG.zPosition = 4
 
 
         Shield_LBL = SKLabelNode(text: "Shields")
-        Shield_LBL.position = CGPoint(x: -200, y: -200)
+        Shield_LBL.position = CGPoint(x: -300, y: -185)
         Shield_LBL.fontColor = SKColor.black
         Shield_LBL.fontName = "Marion-Bold"
         Shield_LBL.fontSize = 30
         Shield_LBL.zPosition = 5
         
         Missile_LBL = SKLabelNode(text: "Missiles")
-        Missile_LBL.position = CGPoint(x: 0, y: -200)
+        Missile_LBL.position = CGPoint(x: -150, y: -185)
         Missile_LBL.fontColor = SKColor.black
-        Missile_LBL.fontName = "Marion"
+        Missile_LBL.fontName = "Marion-Bold"
         Missile_LBL.fontSize = 30
         Missile_LBL.zPosition = 5
 
         Laser_LBL = SKLabelNode(text: "Lasers")
-        Laser_LBL.position = CGPoint(x: 200, y: -200)
+        Laser_LBL.position = CGPoint(x: 0, y: -185)
         Laser_LBL.fontColor = SKColor.black
-        Laser_LBL.fontName = "Marion"
+        Laser_LBL.fontName = "Marion-Bold"
         Laser_LBL.fontSize = 30
         Laser_LBL.zPosition = 5
     }
@@ -101,27 +101,30 @@ class CombatUI {
     }
 
     func Update() {
-        Shield_PRG.size.width = CGFloat(Float(WIDTH_BTN) * Inf.GetShieldProgress())
-        Missile_PRG.size.width = CGFloat(Float(WIDTH_BTN) * Inf.GetMissileProgress())
-        Laser_PRG.size.width = CGFloat(Float(WIDTH_BTN) * Inf.GetLaserProgress())
+        Shield_PRG.size.width = CGFloat(Double(WIDTH_BTN) * Inf.GetShieldProgress())
+        Missile_PRG.size.width = CGFloat(Double(WIDTH_BTN) * Inf.GetMissileProgress())
+        Laser_PRG.size.width = CGFloat(Double(WIDTH_BTN)  * Inf.GetLaserProgress())
     }
 
     func touchDown(atPoint pos: CGPoint)->Bool {
         if Is_In_Bounds(node: Shield_BTN, pos: pos) {
             if Inf.IsShieldReady() {
                 Master.ToggleShield()
+                Inf.ResetShieldTimer()
                 return true
             }
         }
         if Is_In_Bounds(node: Missile_BTN, pos: pos) {
             if Inf.IsMissileReady() {
                 Master.FireMissile()
+                Inf.ResetMissileTimer()
                 return true
             }
         }
         if Is_In_Bounds(node: Laser_BTN, pos: pos) {
             if Inf.IsLaserReady() {
                 Master.FireLaser()
+                Inf.ResetLaserTimer()
                 return true
             }
         }
