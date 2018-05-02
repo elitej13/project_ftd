@@ -13,7 +13,8 @@ class CombatUI {
     
     var Master: Combat
     var Inf: CombatInfo
-    let WIDTH_BTN = 100
+    let WIDTH_BTN = 130
+    let HEIGHT_BTN = 35
 
     var Shield_BTN: SKSpriteNode
     var Missile_BTN: SKSpriteNode
@@ -32,53 +33,53 @@ class CombatUI {
         Inf = inf
         
         Shield_BTN = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_BTN")))
-        Shield_BTN.position = CGPoint(x: -200, y: -100)
-        Shield_BTN.size = CGSize(width: WIDTH_BTN, height: 50)
+        Shield_BTN.position = CGPoint(x: -300, y: -200)
+        Shield_BTN.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
         Shield_BTN.zPosition = 3
         
         Missile_BTN = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_BTN")))
-        Missile_BTN.position = CGPoint(x: 0, y: -100)
-        Missile_BTN.size = CGSize(width: WIDTH_BTN, height: 50)
+        Missile_BTN.position = CGPoint(x: -150, y: -200)
+        Missile_BTN.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
         Missile_BTN.zPosition = 3
 
         Laser_BTN = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_BTN")))
-        Laser_BTN.position = CGPoint(x: 200, y: -100)
-        Laser_BTN.size = CGSize(width: WIDTH_BTN, height: 50)
+        Laser_BTN.position = CGPoint(x: 0, y: -200)
+        Laser_BTN.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
         Laser_BTN.zPosition = 3
         
 
         Shield_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
-        Shield_PRG.position = CGPoint(x: -200, y: -100)
-        Shield_PRG.size = CGSize(width: WIDTH_BTN, height: 50)
+        Shield_PRG.position = CGPoint(x: -300, y: -200)
+        Shield_PRG.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
         Shield_PRG.zPosition = 4
         
         Missile_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
-        Missile_PRG.position = CGPoint(x: 0, y: -100)
-        Missile_PRG.size = CGSize(width: WIDTH_BTN, height: 50)
+        Missile_PRG.position = CGPoint(x: -150, y: -200)
+        Missile_PRG.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
         Missile_PRG.zPosition = 4
 
         Laser_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
-        Laser_PRG.position = CGPoint(x: 200, y: -100)
-        Laser_PRG.size = CGSize(width: WIDTH_BTN, height: 50)
+        Laser_PRG.position = CGPoint(x: 0, y: -200)
+        Laser_PRG.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
         Laser_PRG.zPosition = 4
 
 
         Shield_LBL = SKLabelNode(text: "Shields")
-        Shield_LBL.position = CGPoint(x: -200, y: -100)
+        Shield_LBL.position = CGPoint(x: -200, y: -200)
         Shield_LBL.fontColor = SKColor.black
         Shield_LBL.fontName = "Marion-Bold"
         Shield_LBL.fontSize = 30
         Shield_LBL.zPosition = 5
         
         Missile_LBL = SKLabelNode(text: "Missiles")
-        Missile_LBL.position = CGPoint(x: 0, y: -100)
+        Missile_LBL.position = CGPoint(x: 0, y: -200)
         Missile_LBL.fontColor = SKColor.black
         Missile_LBL.fontName = "Marion"
         Missile_LBL.fontSize = 30
         Missile_LBL.zPosition = 5
 
         Laser_LBL = SKLabelNode(text: "Lasers")
-        Laser_LBL.position = CGPoint(x: 200, y: -100)
+        Laser_LBL.position = CGPoint(x: 200, y: -200)
         Laser_LBL.fontColor = SKColor.black
         Laser_LBL.fontName = "Marion"
         Laser_LBL.fontSize = 30
