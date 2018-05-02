@@ -19,10 +19,12 @@ class CombatInfo {
 
     var MissileCount: Int
 
+    var EShieldTimer: Int
     var ShieldTimer: Int
     var MissileTimer: Int
     var LaserTimer: Int
 
+    var EShieldDelay: Int
     var ShieldDelay: Int
     var MissileDelay: Int
     var LaserDelay: Int
@@ -32,10 +34,12 @@ class CombatInfo {
         ShieldActive = true
         EnemyShieldActive = true
 
+        EShieldTimer = 0
         ShieldTimer = 0
         MissileTimer = 0
         LaserTimer = 0
         
+        EShieldDelay = 60
         ShieldDelay = 60
         MissileDelay = 120
         LaserDelay = 60
@@ -47,6 +51,9 @@ class CombatInfo {
     }
 
     func Update() {
+        if EShieldTimer > 0 {
+            EShieldTimer -= 1;
+        }
         if ShieldTimer > 0 {
             ShieldTimer -= 1;
         }
@@ -57,7 +64,9 @@ class CombatInfo {
             LaserTimer -= 1;
         }
     }
-
+    func IsEShieldReady()->Bool {
+        return EShieldTimer <= 0 ? true : false
+    }
     func IsShieldReady()->Bool {
         return ShieldTimer <= 0 ? true : false
     }
@@ -78,6 +87,9 @@ class CombatInfo {
         return 1.0 - (Double(LaserTimer) / Double(LaserDelay))
     }
     
+    func ResetEShieldTimer() {
+        ShieldTimer = ShieldDelay
+    }
     func ResetShieldTimer() {
         ShieldTimer = ShieldDelay
     }
