@@ -35,7 +35,6 @@ class CombatInfo {
 
     func Update() {
         if ShieldTimer > 0 {
-            print("\(ShieldTimer)")
             ShieldTimer -= 1;
         }
         if MissileTimer > 0 {

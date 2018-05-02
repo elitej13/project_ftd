@@ -91,7 +91,7 @@ class Combat {
 
         Shield = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Shield_faded")))
         Shield.position = CGPoint(x: -150, y: 0)
-        Shield.size = CGSize(width: 500, height: 500)
+        Shield.size = CGSize(width: 500, height: 480)
         Shield.zPosition = 5
         
         EnemyShip = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "enemy_ship_one")))
@@ -101,7 +101,7 @@ class Combat {
 
         EnemyShield = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Shield_faded")))
         EnemyShield.position = CGPoint(x: 250, y: 0)
-        EnemyShield.size = CGSize(width: 300, height: 300)
+        EnemyShield.size = CGSize(width: 300, height: 320)
         EnemyShield.zPosition = 5
         
         Selection = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "frame")))
@@ -138,6 +138,9 @@ class Combat {
         }
         for act in Select_Actions{
             Selection.run(act)
+        }
+        for act in Shield_Actions{
+            Shield.run(act)
         }
     }
     func touchDown(atPoint pos: CGPoint) {
@@ -223,9 +226,13 @@ class Combat {
     func ToggleShield() {
         if Inf.ShieldActive {
             Inf.ShieldActive = false
+            let fade = SKAction.fadeOut(withDuration: 0.5)
+            Shield_Actions.append(fade)
         }
         else {
             Inf.ShieldActive = true
+            let fade = SKAction.fadeIn(withDuration: 0.5)
+            Shield_Actions.append(fade)
         }
         print("Shield status \(Inf.ShieldActive)")
     }

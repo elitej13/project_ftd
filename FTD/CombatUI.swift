@@ -39,57 +39,57 @@ class CombatUI {
         Inf = inf
         
         Enemy_Health_BRD = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_BTN")))
-        Enemy_Health_BRD.position = CGPoint(x: 300, y: 175)
+        Enemy_Health_BRD.position = CGPoint(x: 260, y: 190)
         Enemy_Health_BRD.size = CGSize(width: 200, height: 25)
-        Enemy_Health_BRD.zPosition = 3
+        Enemy_Health_BRD.zPosition = 6
 
         Player_Health_BRD = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_BTN")))
-        Player_Health_BRD.position = CGPoint(x: -300, y: -175)
+        Player_Health_BRD.position = CGPoint(x: -260, y: 190)
         Player_Health_BRD.size = CGSize(width: 200, height: 25)
-        Player_Health_BRD.zPosition = 3
+        Player_Health_BRD.zPosition = 6
 
 
         Enemy_Health_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
-        Enemy_Health_PRG.position = CGPoint(x: 300, y: 175)
+        Enemy_Health_PRG.position = CGPoint(x: 260, y: 190)
         Enemy_Health_PRG.size = CGSize(width: 200, height: 25)
-        Enemy_Health_PRG.zPosition = 4
+        Enemy_Health_PRG.zPosition = 7
 
         Player_Health_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
-        Player_Health_PRG.position = CGPoint(x: -300, y: 175)
+        Player_Health_PRG.position = CGPoint(x: -260, y: 190)
         Player_Health_PRG.size = CGSize(width: 200, height: 25)
-        Player_Health_PRG.zPosition = 4
+        Player_Health_PRG.zPosition = 7
 
 
         Shield_BTN = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_BTN")))
         Shield_BTN.position = CGPoint(x: -300, y: -175)
         Shield_BTN.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
-        Shield_BTN.zPosition = 3
+        Shield_BTN.zPosition = 6
         
         Missile_BTN = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_BTN")))
         Missile_BTN.position = CGPoint(x: -150, y: -175)
         Missile_BTN.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
-        Missile_BTN.zPosition = 3
+        Missile_BTN.zPosition = 6
 
         Laser_BTN = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_BTN")))
         Laser_BTN.position = CGPoint(x: 0, y: -175)
         Laser_BTN.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
-        Laser_BTN.zPosition = 3
+        Laser_BTN.zPosition = 6
         
 
         Shield_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
         Shield_PRG.position = CGPoint(x: -300, y: -175)
         Shield_PRG.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
-        Shield_PRG.zPosition = 4
+        Shield_PRG.zPosition = 7
         
         Missile_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
         Missile_PRG.position = CGPoint(x: -150, y: -175)
         Missile_PRG.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
-        Missile_PRG.zPosition = 4
+        Missile_PRG.zPosition = 7
 
         Laser_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
         Laser_PRG.position = CGPoint(x: 0, y: -175)
         Laser_PRG.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
-        Laser_PRG.zPosition = 4
+        Laser_PRG.zPosition = 7
 
 
         Shield_LBL = SKLabelNode(text: "Shields")
@@ -97,21 +97,21 @@ class CombatUI {
         Shield_LBL.fontColor = SKColor.black
         Shield_LBL.fontName = "Marion-Bold"
         Shield_LBL.fontSize = 30
-        Shield_LBL.zPosition = 5
+        Shield_LBL.zPosition = 8
         
         Missile_LBL = SKLabelNode(text: "Missiles")
         Missile_LBL.position = CGPoint(x: -150, y: -185)
         Missile_LBL.fontColor = SKColor.black
         Missile_LBL.fontName = "Marion-Bold"
         Missile_LBL.fontSize = 30
-        Missile_LBL.zPosition = 5
+        Missile_LBL.zPosition = 8
 
         Laser_LBL = SKLabelNode(text: "Lasers")
         Laser_LBL.position = CGPoint(x: 0, y: -185)
         Laser_LBL.fontColor = SKColor.black
         Laser_LBL.fontName = "Marion-Bold"
         Laser_LBL.fontSize = 30
-        Laser_LBL.zPosition = 5
+        Laser_LBL.zPosition = 8
     }
 
     func Add_Children(GameScene:SKScene) {
@@ -128,9 +128,9 @@ class CombatUI {
         GameScene.addChild(Laser_LBL)
 
         GameScene.addChild(Enemy_Health_BRD)
-        GameScene.addChild(Player_Health_PRG)
-
-        GameScene.addChild(Enemy_Health_BRD)
+        GameScene.addChild(Player_Health_BRD)
+        
+        GameScene.addChild(Enemy_Health_PRG)
         GameScene.addChild(Player_Health_PRG)
     }
 
