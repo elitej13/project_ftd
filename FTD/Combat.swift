@@ -28,34 +28,48 @@ class Combat {
         Inf = CombatInfo()
 
         let base = #imageLiteral(resourceName: "floor")
-        let pilotico = #imageLiteral(resourceName: "pilot_icon")
-        let shieldico = #imageLiteral(resourceName: "shield")
-        let engineerico = #imageLiteral(resourceName: "engineer")
+        let pilot_ico = #imageLiteral(resourceName: "pilot_icon")
+        let shield_ico = #imageLiteral(resourceName: "shield_icon")
+        let engineer_ico = #imageLiteral(resourceName: "engineer_icon")
+        let laser_ico = #imageLiteral(resourceName: "laser_icon")
+        let missile_ico = #imageLiteral(resourceName: "missile_icon")
         let size = CGSize(width: base.size.width, height: base.size.height)
         
         UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
         base.draw(in: CGRect(x:0, y:0, width: base.size.width, height: base.size.height));
-        pilotico.draw(in: CGRect(x:base.size.width / 4, y:base.size.height / 4, width: base.size.width / 2, height: base.size.height / 2));
+        pilot_ico.draw(in: CGRect(x:base.size.width / 4, y:base.size.height / 4, width: base.size.width / 2, height: base.size.height / 2));
         let pilotRoom:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
 
         UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
         base.draw(in: CGRect(x:0, y:0, width: base.size.width, height: base.size.height));
-        shieldico.draw(in: CGRect(x:base.size.width / 4, y:base.size.height / 4, width: base.size.width / 2, height: base.size.height / 2));
+        shield_ico.draw(in: CGRect(x:base.size.width / 4, y:base.size.height / 4, width: base.size.width / 2, height: base.size.height / 2));
         let shieldRoom:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
 
         UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
         base.draw(in: CGRect(x:0, y:0, width: base.size.width, height: base.size.height));
-        engineerico.draw(in: CGRect(x:base.size.width / 4, y:base.size.height / 4, width: base.size.width / 2, height: base.size.height / 2));
+        engineer_ico.draw(in: CGRect(x:base.size.width / 4, y:base.size.height / 4, width: base.size.width / 2, height: base.size.height / 2));
         let engineerRoom:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        base.draw(in: CGRect(x:0, y:0, width: base.size.width, height: base.size.height));
+        laser_ico.draw(in: CGRect(x:base.size.width / 4, y:base.size.height / 4, width: base.size.width / 2, height: base.size.height / 2));
+        let laserRoom:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        base.draw(in: CGRect(x:0, y:0, width: base.size.width, height: base.size.height));
+        missile_ico.draw(in: CGRect(x:base.size.width / 4, y:base.size.height / 4, width: base.size.width / 2, height: base.size.height / 2));
+        let missileRoom:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         Rooms.append(Room(type: Room.Name.PILOT, image: pilotRoom, x: 120, y: 0, w: 80, h: 80))
         Rooms.append(Room(type: Room.Name.SHIELD, image: shieldRoom, x: 40, y: 40, w: 80, h: 80))
-        Rooms.append(Room(type: Room.Name.LASER, image: #imageLiteral(resourceName: "floor"), x: 40, y: -40, w: 80, h: 80))
-        Rooms.append(Room(type: Room.Name.ENGINE, image: engineerRoom, x: -40, y:-40, w: 80, h: 80))
-        Rooms.append(Room(type: Room.Name.UTILITY, image: #imageLiteral(resourceName: "floor"), x: -40, y: 40, w: 80, h: 80))
+        Rooms.append(Room(type: Room.Name.ENGINE, image: engineerRoom, x: 40, y: -40, w: 80, h: 80))
+        Rooms.append(Room(type: Room.Name.LASER, image: laserRoom, x: -40, y:-40, w: 80, h: 80))
+        Rooms.append(Room(type: Room.Name.MISSILE, image: missileRoom, x: -40, y: 40, w: 80, h: 80))
         
         Crew.append(Entity(image: #imageLiteral(resourceName: "crew"), x: -100, y: 50, room: Rooms[0]))
         Crew.append(Entity(image: #imageLiteral(resourceName: "crew"), x: 0, y: 50, room: Rooms[1]))

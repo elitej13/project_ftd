@@ -15,7 +15,7 @@ class Room {
         case LASER
         case SHIELD
         case ENGINE
-        case UTILITY
+        case MISSILE
         case PILOT
     }
 
