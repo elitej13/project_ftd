@@ -16,6 +16,12 @@ class CombatUI {
     let WIDTH_BTN = 130
     let HEIGHT_BTN = 35
 
+    var Enemy_Health_BRD: SKSpriteNode
+    var Player_Health_BRD: SKSpriteNode
+
+    var Enemy_Health_PRG: SKSpriteNode
+    var Player_Health_PRG: SKSpriteNode
+
     var Shield_BTN: SKSpriteNode
     var Missile_BTN: SKSpriteNode
     var Laser_BTN: SKSpriteNode
@@ -32,6 +38,28 @@ class CombatUI {
         Master = master
         Inf = inf
         
+        Enemy_Health_BRD = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_BTN")))
+        Enemy_Health_BRD.position = CGPoint(x: 300, y: 175)
+        Enemy_Health_BRD.size = CGSize(width: 200, height: 25)
+        Enemy_Health_BRD.zPosition = 3
+
+        Player_Health_BRD = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_BTN")))
+        Player_Health_BRD.position = CGPoint(x: -300, y: -175)
+        Player_Health_BRD.size = CGSize(width: 200, height: 25)
+        Player_Health_BRD.zPosition = 3
+
+
+        Enemy_Health_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
+        Enemy_Health_PRG.position = CGPoint(x: 300, y: 175)
+        Enemy_Health_PRG.size = CGSize(width: 200, height: 25)
+        Enemy_Health_PRG.zPosition = 4
+
+        Player_Health_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
+        Player_Health_PRG.position = CGPoint(x: -300, y: 175)
+        Player_Health_PRG.size = CGSize(width: 200, height: 25)
+        Player_Health_PRG.zPosition = 4
+
+
         Shield_BTN = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_BTN")))
         Shield_BTN.position = CGPoint(x: -300, y: -175)
         Shield_BTN.size = CGSize(width: WIDTH_BTN, height: HEIGHT_BTN)
@@ -98,6 +126,12 @@ class CombatUI {
         GameScene.addChild(Shield_LBL)
         GameScene.addChild(Missile_LBL)
         GameScene.addChild(Laser_LBL)
+
+        GameScene.addChild(Enemy_Health_BRD)
+        GameScene.addChild(Player_Health_PRG)
+
+        GameScene.addChild(Enemy_Health_BRD)
+        GameScene.addChild(Player_Health_PRG)
     }
 
     func Update() {

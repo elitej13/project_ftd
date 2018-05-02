@@ -13,12 +13,17 @@ class Combat {
     
     var Crew = [Entity]()
     var Rooms = [Room]()
-    var Selection: SKSpriteNode
-    var Actions = [SKAction]()
+    var Select_Actions = [SKAction]()
+    var Shield_Actions = [SKAction]()
     var Active: (isActive: Bool, isCrew: Bool, crew: Entity, room: Room)
+
     var Ship: SKSpriteNode
+    var Shield: SKSpriteNode
     var EnemyShip: SKSpriteNode
+    var EnemyShield: SKSpriteNode
     var Background: SKSpriteNode
+    var Selection: SKSpriteNode
+
     var UI: CombatUI?
     var Inf: CombatInfo
     var Master: Game
@@ -83,11 +88,21 @@ class Combat {
         Ship.position = CGPoint(x: -150, y: 0)
         Ship.size = CGSize(width: 500, height: 350)
         Ship.zPosition = 1
+
+        Shield = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Shield_faded")))
+        Shield.position = CGPoint(x: -150, y: 0)
+        Shield.size = CGSize(width: 500, height: 500)
+        Shield.zPosition = 5
         
         EnemyShip = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "enemy_ship_one")))
         EnemyShip.position = CGPoint(x: 250, y: 0)
         EnemyShip.size = CGSize(width: 200, height: 300)
         EnemyShip.zPosition = 1
+
+        EnemyShield = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Shield_faded")))
+        EnemyShield.position = CGPoint(x: 250, y: 0)
+        EnemyShield.size = CGSize(width: 300, height: 300)
+        EnemyShield.zPosition = 5
         
         Selection = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "frame")))
         Selection.position = CGPoint(x: -500, y: -500)
@@ -109,8 +124,10 @@ class Combat {
         //Background.size = CGSize(width: GameScene.size.width, height: GameScene.size.height)
         GameScene.addChild(Background)
         GameScene.addChild(Selection)
-        GameScene.addChild(EnemyShip)
         GameScene.addChild(Ship)
+        GameScene.addChild(Shield)
+        GameScene.addChild(EnemyShip)
+        GameScene.addChild(EnemyShield)
     }
     func Update() {
         Inf.Update()
@@ -119,7 +136,7 @@ class Combat {
         for ent in Crew {
             ent.Update()
         }
-        for act in Actions{
+        for act in Select_Actions{
             Selection.run(act)
         }
     }
@@ -163,13 +180,13 @@ class Combat {
     }
     func Move_Seletion_Frame_Off_Screen() {
         let move = SKAction.move(to: CGPoint(x: -1000, y: -1000) , duration: 0.01)
-        Actions.append(move)
+        Select_Actions.append(move)
     }
     func Move_Seletion_Frame(node: SKSpriteNode) {
         let move = SKAction.move(to: node.position , duration: 0.01)
         let scale = SKAction.scale(to: node.size, duration: 0.01)
-        Actions.append(move)
-        Actions.append(scale)
+        Select_Actions.append(move)
+        Select_Actions.append(scale)
     }
     func Is_In_Bounds(node: SKSpriteNode, pos: CGPoint)->Bool {
         let x0 = node.position.x - (node.size.width / 2)
@@ -204,7 +221,12 @@ class Combat {
 
 
     func ToggleShield() {
-        Inf.ShieldActive = !Inf.ShieldActive
+        if Inf.ShieldActive {
+            Inf.ShieldActive = false
+        }
+        else {
+            Inf.ShieldActive = true
+        }
         print("Shield status \(Inf.ShieldActive)")
     }
     func FireMissile() {
