@@ -12,7 +12,7 @@ import GameplayKit
 class CombatUI {
     
     var Master: Combat
-    var Inf: CombatInf
+    var Inf: CombatInfo
     let WIDTH_BTN = 100
 
     var Shield_BTN: SKSpriteNode
@@ -27,37 +27,37 @@ class CombatUI {
     var Missile_LBL: SKLabelNode
     var Laser_LBL: SKLabelNode
 
-    init(master: Combat, inf: CombatInf) {
+    init(master: Combat, inf: CombatInfo) {
         Master = master
         Inf = inf
         
-        Shield_BTN = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy_pinkblack")))
+        Shield_BTN = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_BTN")))
         Shield_BTN.position = CGPoint(x: -200, y: -100)
         Shield_BTN.size = CGSize(width: WIDTH_BTN, height: 50)
         Shield_BTN.zPosition = 3
         
-        Missile_BTN = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy_pinkblack")))
+        Missile_BTN = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_BTN")))
         Missile_BTN.position = CGPoint(x: 0, y: -100)
         Missile_BTN.size = CGSize(width: WIDTH_BTN, height: 50)
         Missile_BTN.zPosition = 3
 
-        Laser_BTN = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy_pinkblack")))
+        Laser_BTN = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_BTN")))
         Laser_BTN.position = CGPoint(x: 200, y: -100)
         Laser_BTN.size = CGSize(width: WIDTH_BTN, height: 50)
         Laser_BTN.zPosition = 3
         
 
-        Shield_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy_pinkblack")))
+        Shield_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
         Shield_PRG.position = CGPoint(x: -200, y: -100)
         Shield_PRG.size = CGSize(width: WIDTH_BTN, height: 50)
         Shield_PRG.zPosition = 4
         
-        Missile_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy_pinkblack")))
+        Missile_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
         Missile_PRG.position = CGPoint(x: 0, y: -100)
         Missile_PRG.size = CGSize(width: WIDTH_BTN, height: 50)
         Missile_PRG.zPosition = 4
 
-        Laser_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "galaxy_pinkblack")))
+        Laser_PRG = SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "Frame_PRG")))
         Laser_PRG.position = CGPoint(x: 200, y: -100)
         Laser_PRG.size = CGSize(width: WIDTH_BTN, height: 50)
         Laser_PRG.zPosition = 4
@@ -100,9 +100,9 @@ class CombatUI {
     }
 
     func Update() {
-        Shield_PRG.size.width = CGFloat(WIDTH_BTN * Inf.GetShieldProgress())
-        Missile_PRG.size.width = CGFloat(WIDTH_BTN * Inf.GetMissileProgress())
-        Laser_PRG.size.width = CGFloat(WIDTH_BTN * Inf.GetLaserProgress())
+        Shield_PRG.size.width = CGFloat(Float(WIDTH_BTN) * Inf.GetShieldProgress())
+        Missile_PRG.size.width = CGFloat(Float(WIDTH_BTN) * Inf.GetMissileProgress())
+        Laser_PRG.size.width = CGFloat(Float(WIDTH_BTN) * Inf.GetLaserProgress())
     }
 
     func touchDown(atPoint pos: CGPoint)->Bool {
@@ -120,10 +120,11 @@ class CombatUI {
         }
         if Is_In_Bounds(node: Laser_BTN, pos: pos) {
             if Inf.IsLaserReady() {
-                Master.FireLaster()
+                Master.FireLaser()
                 return true
             }
         }
+        return false
     }    
 
     func Is_In_Bounds(node: SKSpriteNode, pos: CGPoint)->Bool {

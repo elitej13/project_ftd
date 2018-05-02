@@ -84,7 +84,8 @@ class Combat {
     }
     
     func Add_Children(GameScene:SKScene) {
-        UI = CombatUI(master: self)
+        UI = CombatUI(master: self, inf: Inf)
+        UI!.Add_Children(GameScene: GameScene)
         for ent in Crew {
             GameScene.addChild(ent.Sprite)
         }
@@ -98,8 +99,8 @@ class Combat {
         GameScene.addChild(Ship)
     }
     func Update() {
-        CombatInfo.Update()
-        CombatUI?.Update()
+        Inf.Update()
+        UI?.Update()
 
         for ent in Crew {
             ent.Update()
@@ -110,7 +111,7 @@ class Combat {
     }
     func touchDown(atPoint pos: CGPoint) {
         //First check for UI input
-        if UI.touchDown(atPoint: pos) {
+        if UI!.touchDown(atPoint: pos) {
             return
         }
 

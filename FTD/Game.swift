@@ -67,7 +67,6 @@ class Game {
         }
     }
     func touchDown(atPoint pos : CGPoint) {
-        print("Touched in overworld")
         switch State {
         case STATE.OVERWORLD:
             OverworldScreen?.touchDown(atPoint: pos)

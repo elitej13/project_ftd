@@ -18,22 +18,30 @@ class CombatInfo {
     var ShieldDelay: Int
     var MissileDelay: Int
     var LaserDelay: Int
+    
+    public var ShieldActive: Bool
 
     init() {
         ShieldTimer = 60
         MissileTimer = 120
         LaserTimer = 60
+        
+        ShieldDelay = 60
+        MissileDelay = 120
+        LaserDelay = 60
+        
+        ShieldActive = true
     }
 
     func Update() {
         if ShieldTimer > 0 {
-            ShieldTimer--;
+            ShieldTimer -= 1;
         }
         if MissileTimer > 0 {
-            MissileTimer--;
+            MissileTimer -= 1;
         }
         if LaserTimer > 0 {
-            LaserTimer--;
+            LaserTimer -= 1;
         }
     }
 
@@ -48,13 +56,13 @@ class CombatInfo {
     }
 
     func GetShieldProgress()->Float {
-        return 1f - Float(ShieldTimer / ShieldDelay)
+        return 1.0 - Float(ShieldTimer / ShieldDelay)
     }
     func GetMissileProgress()->Float {
-        return 1f - Float(MissileTimer / MissileDelay)
+        return 1.0 - Float(MissileTimer / MissileDelay)
     }
     func GetLaserProgress()->Float {
-        return 1f - Float(LaserTimer / LaserDelay)
+        return 1.0 - Float(LaserTimer / LaserDelay)
     }
     
     func ResetShieldTimer() {

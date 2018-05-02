@@ -28,10 +28,10 @@ class Overworld {
         Selection.size = CGSize(width: 16, height: 16)
         Selection.zPosition = 4
         
-        Waypoints.append(SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "beige-octagon-md"))))
-        Waypoints.append(SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "beige-octagon-md"))))
-        Waypoints.append(SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "beige-octagon-md"))))
-        Waypoints.append(SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "beige-octagon-md"))))
+        Waypoints.append(SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "waypoint"))))
+        Waypoints.append(SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "waypoint"))))
+        Waypoints.append(SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "waypoint"))))
+        Waypoints.append(SKSpriteNode(texture: SKTexture(image: #imageLiteral(resourceName: "waypoint"))))
         Waypoints[0].position = CGPoint(x: -100, y: 0)
         Waypoints[1].position = CGPoint(x: 0, y: 30)
         Waypoints[2].position = CGPoint(x: 0, y: -30)
@@ -59,7 +59,6 @@ class Overworld {
         }
     }
     func touchDown(atPoint pos : CGPoint) {
-        print("Touched in overworld")
         for node in Waypoints {
             let x0 = node.position.x
             let x1 = node.position.x + node.size.width
